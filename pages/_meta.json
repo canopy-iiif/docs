@@ -1,13 +1,19 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "Overview",
+  "setup": "Setup",
+  "deploy": "Deploy",
+  "customize": "Customize",
+  "components": "Components",
   "about": {
     "title": "About",
     "type": "page"
   },
+  "showcase": {
+    "title": "Showcase",
+    "type": "page"
+  },
   "contact": {
-    "title": "Contact ↗",
+    "title": "What is IIIF? ↗",
     "type": "page",
     "href": "https://twitter.com/shuding_",
     "newWindow": true

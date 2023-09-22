@@ -1,18 +1,23 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import { DocsThemeConfig } from "nextra-theme-docs";
+import React from "react";
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>Canopy IIIF</span>,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: "https://github.com/canopy-iiif/canopy-iiif",
   },
-  chat: {
-    link: 'https://discord.com',
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: "https://github.com/canopy-iiif/docs",
   footer: {
-    text: 'Nextra Docs Template',
+    text: "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions",
   },
-}
+  darkMode: false,
+  nextThemes: {
+    defaultTheme: "dark",
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 0,
+    autoCollapse: true,
+  },
+};
 
-export default config
+export default config;
