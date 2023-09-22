@@ -6,7 +6,7 @@ const config: DocsThemeConfig = {
   project: {
     link: "https://github.com/canopy-iiif/canopy-iiif",
   },
-  docsRepositoryBase: "https://github.com/canopy-iiif/docs",
+  docsRepositoryBase: "https://github.com/canopy-iiif/docs/blob/main",
   footer: {
     text: "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions",
   },
