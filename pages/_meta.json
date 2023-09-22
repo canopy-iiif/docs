@@ -1,9 +1,9 @@
 {
   "index": "Overview",
   "setup": "Setup",
-  "deploy": "Deploy",
   "customize": "Customize",
-  "components": "Components",
+  "content": "Create Content",
+  "deploy": "Deploy",
   "about": {
     "title": "About",
     "type": "page"
