@@ -1,0 +1,25 @@
+Hosting on [GitHub Pages](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) can be done easily
+in just a few steps.
+
+1. Click the "Use this template" button at the top of the [Canopy-IIIF](https://github.com/canopy-iiif/canopy-iiif)
+repository to create a new repository based on this template. Select "Create a new repository" and choose the GitHub
+account or organization you want to copy the contents to from the **Owner** dropdown. Choose a name for your new repository
+and entire it in the **Repository name** field. Unless you have a paid GitHub account, select **Public**. Click the
+"Create repository" button to create the new repository.
+![Use Template](/use-template.png)
+
+2. Once the repository is created, press the **Settings** button and **Actions** → **General** under *Code and automation*.
+Then select **Read and write permissions** under *Workflow permissions* and press **Save**. This allows the GitHub
+workflow to run and the static Canopy output to be deployed to a new branch.
+![Workflow Permissions](/workflow-permissions.png)
+
+3. Next, modify the `.github/workflows/gh-pages.deploy.yml` file in repository for the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH`
+to be relative to the new repository. After changing these settings, commit your change and trigger the action to run.
+Once the action has run, the action indicator should change from a *red X* to a *green check mark* and a new branch called
+**gh-pages** will be created.
+![Modify gh-pages.deploy.yml](/modify-gh-pages-deploy.png)
+
+4. Once the **gh-pages** branch exists and the action indicator is a *green check mark*, again press the Settings button.
+Under *Code and automation*, click **Pages** and select **gh-pages** from the **Branch** dropdown under *Build and deployment*
+and click **Save*. Now your Canopy site will be active at the URL you defined in the `NEXT_PUBLIC_URL` setting.
+![Set gh-pages in Settings](/set-gh-pages.png)
