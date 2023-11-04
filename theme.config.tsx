@@ -1,8 +1,9 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
+import Logo from "./components/Logo";
 import React from "react";
 
 const config: DocsThemeConfig = {
-  logo: <span>Canopy IIIF</span>,
+  logo: <Logo />,
   project: {
     link: "https://github.com/canopy-iiif/canopy-iiif",
   },
@@ -11,9 +12,11 @@ const config: DocsThemeConfig = {
     text: "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions",
   },
   darkMode: false,
+  gitTimestamp: null,
   nextThemes: {
     defaultTheme: "dark",
   },
+  primaryHue: 225,
   sidebar: {
     defaultMenuCollapseLevel: 0,
     autoCollapse: true,

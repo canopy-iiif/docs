@@ -1,21 +1,33 @@
 {
-  "index": "Overview",
-  "setup": "Setup",
-  "customize": "Customize",
-  "content": "Create Content",
-  "deploy": "Deploy",
-  "about": {
-    "title": "About",
+  "index": {
+    "title": "Home",
+    "theme": {
+      "breadcrumb": false,
+      "footer": false,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    }
+  },
+  "--": {
+    "type": "separator"
+  },
+  "docs": {
+    "title": "Docs",
     "type": "page"
   },
-  "showcase": {
-    "title": "Showcase",
+  "examples": {
+    "title": "Examples",
+    "type": "page"
+  },
+  "about": {
+    "title": "About",
     "type": "page"
   },
   "contact": {
     "title": "What is IIIF? ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://iiif.io/",
     "newWindow": true
   }
 }

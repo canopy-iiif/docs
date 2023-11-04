@@ -1,0 +1,45 @@
+import "@radix-ui/themes/styles.css";
+
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { crimson, gold, grass, indigo, slate, violet } from "@radix-ui/colors";
+
+import { Theme } from "@radix-ui/themes";
+
+export const dm_sans = DM_Sans({
+  subsets: ["latin"],
+});
+
+export const dm_serif_display = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+export default function CanopyDocsApp({ Component, pageProps }) {
+  return (
+    <Theme className={dm_sans.className}>
+      <style jsx global>{`
+        :root {
+          --shiki-color-text: ${slate.slate9};
+          --shiki-color-background: transparent;
+          --shiki-token-constant: ${indigo.indigo10};
+          --shiki-token-string: ${grass.grass9};
+          --shiki-token-comment: ${slate.slate7};
+          --shiki-token-keyword: ${crimson.crimson11};
+          --shiki-token-parameter: ${gold.gold9};
+          --shiki-token-function: ${violet.violet9};
+          --shiki-token-string-expression: ${indigo.indigo10};
+          --shiki-token-punctuation: ${slate.slate9};
+          --shiki-token-link: ${grass.grass8};
+        }
+        html {
+          --canopy-sans-font: ${dm_sans.style.fontFamily};
+          --canopy-display-font: ${dm_serif_display.style.fontFamily};
+        }
+        .radix-themes {
+          --default-font-family: var(--canopy-sans-font), sans-serif;
+        }
+      `}</style>
+      <Component {...pageProps} />
+    </Theme>
+  );
+}
