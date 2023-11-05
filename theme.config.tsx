@@ -14,7 +14,7 @@ const config: DocsThemeConfig = {
   darkMode: false,
   gitTimestamp: null,
   nextThemes: {
-    defaultTheme: "dark",
+    defaultTheme: "light",
   },
   primaryHue: 225,
   sidebar: {
