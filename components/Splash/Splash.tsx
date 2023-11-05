@@ -5,7 +5,7 @@ import RenderedScreen from "./RenderedScreen";
 
 const Splash = ({ children }) => {
   return (
-    <Section size="2">
+    <Section size="3">
       <Box style={{ position: "relative" }}>
         <Box>{children}</Box>
         <RenderedScreen />

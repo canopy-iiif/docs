@@ -19,7 +19,7 @@ const Introduction = ({ heading, subHeading }) => {
           dangerouslySetInnerHTML={{ __html: heading }}
         />
         <Flex direction="column" gap="2">
-          <Text size="4">{subHeading}</Text>
+          <Text size="4" dangerouslySetInnerHTML={{ __html: subHeading }} />
         </Flex>
         <Box pt="5">
           <Flex gap="3">

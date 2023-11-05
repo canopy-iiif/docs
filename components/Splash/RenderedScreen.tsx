@@ -10,12 +10,12 @@ const RenderedScreen = () => {
         width: "61.8%",
         height: "400px",
         backgroundColor: "var(--accent-1)",
-        boxShadow: "3px 3px 11px var(--accent-5)",
+        boxShadow: "3px 3px 21px var(--accent-4)",
         borderRadius: "5px",
         position: "absolute",
-        top: "-100px",
+        top: "-110px",
         overflow: "hidden",
-        right: "3rem",
+        right: "-110px",
       }}
     >
       <Box

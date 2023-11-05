@@ -6,7 +6,8 @@
       "footer": false,
       "sidebar": false,
       "toc": false,
-      "pagination": false
+      "pagination": false,
+      "layout": "article"
     }
   },
   "--": {
