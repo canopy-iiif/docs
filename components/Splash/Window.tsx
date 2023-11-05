@@ -1,8 +1,9 @@
 import { Box, Flex, ScrollArea } from "@radix-ui/themes";
 
 import React from "react";
+import SplashCollection from "./Collection";
 
-const RenderedScreen = () => {
+const SplashWindow = () => {
   return (
     <Flex
       direction="column"
@@ -72,10 +73,12 @@ const RenderedScreen = () => {
           size="2"
           scrollbars="vertical"
           style={{ position: "absolute", height: "100%", padding: "0.618rem" }}
-        ></ScrollArea>
+        >
+          <SplashCollection />
+        </ScrollArea>
       </Box>
     </Flex>
   );
 };
 
-export default RenderedScreen;
+export default SplashWindow;
