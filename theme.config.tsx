@@ -21,7 +21,6 @@ const config: DocsThemeConfig = {
     defaultMenuCollapseLevel: 0,
     autoCollapse: true,
   },
-  toc: {},
 };
 
 export default config;

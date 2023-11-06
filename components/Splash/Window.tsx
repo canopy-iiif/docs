@@ -9,9 +9,9 @@ const SplashWindow = () => {
       direction="column"
       style={{
         width: "61.8%",
-        height: "400px",
+        height: "480px",
         backgroundColor: "var(--accent-1)",
-        boxShadow: "3px 3px 21px var(--accent-4)",
+        boxShadow: "6px 6px 29px var(--accent-5)",
         borderRadius: "5px",
         position: "absolute",
         top: "-110px",
@@ -40,7 +40,7 @@ const SplashWindow = () => {
               style={{
                 width: "0.618rem",
                 height: "0.618rem",
-                backgroundColor: "var(--accent-8",
+                backgroundColor: "var(--accent-8)",
                 borderRadius: "50%",
                 opacity: "0.5",
               }}
@@ -72,7 +72,7 @@ const SplashWindow = () => {
           type="hover"
           size="2"
           scrollbars="vertical"
-          style={{ position: "absolute", height: "100%", padding: "0.618rem" }}
+          style={{ position: "absolute", height: "100%", padding: "1rem" }}
         >
           <SplashCollection />
         </ScrollArea>
