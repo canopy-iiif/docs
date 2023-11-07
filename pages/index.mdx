@@ -7,30 +7,38 @@ import Introduction from "@components/Introduction";
 />
  
 <Splash>
-```json 
-{
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://api.dc.library.northwestern.edu/api/v2/collections/3121f8ee-5265-4b19-bae3-59f96e9ac01a?as=iiif",
-  "type": "Collection",
-  "label": {
-    "en": ["Aldridge Collection"]
-  },
-  "items": [
-    {
-      "id": "https://api.dc.library.northwestern.edu/api/v2/collections/09ea6209-5b43-4742-86bc-48cc077f94e7?as=iiif",
-      "type": "Manifest",
-      "label": {
-        "en": ["The Anti-Slavery Reporter, October 1958"]
-      }
+  ```json 
+  {
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "id": "https://api.dc.library.northwestern.edu/api/v2/collections/3121f8ee-5265-4b19-bae3-59f96e9ac01a?as=iiif",
+    "type": "Collection",
+    "label": { 
+      "en": [ "Aldridge Collection" ] 
     },
-    {
-      "id": "https://api.dc.library.northwestern.edu/api/v2/collections/a0a02dee-bab9-4004-82c7-30bfa13f0c23?as=iiif",
-      "type": "Manifest",
-      "label": {
-        "en": ["Amanda Aldridge sitting on porch ca. 1956"]
-      }
-    }
-  ]
-}
-``` 
+    "items": [
+      {
+        "id": "https://api.dc.library.northwestern.edu/api/v2/works/9a73ffd7-51f0-45f5-9a87-10f7656d9fce?as=iiif",
+        "type": "Manifest",
+        "label": { 
+          "en": [ "Michel Kovatchevitch and Vivian Dalrymple correspondence" ]
+        }
+      },
+      {
+        "id": "https://api.dc.library.northwestern.edu/api/v2/works/ce94e4f6-d038-4d90-93e1-d6b8900ca038?as=iiif",
+        "type": "Manifest",
+        "label": {
+          "en": [ "Correspondence, Mar 22, 1954" ]
+        }
+      },
+      {
+        "id": "https://api.dc.library.northwestern.edu/api/v2/works/0f23b566-a6bb-4375-9312-ea3fb7081bbc?as=iiif",
+        "type": "Manifest",
+        "label": {
+          "en": [ "Compositions by Montague Ring" ]
+        }
+      },
+      ...
+    ]
+  }
+  ``` 
 </Splash>
