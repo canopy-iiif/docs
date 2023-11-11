@@ -23,7 +23,8 @@ const SplashWindow = ({ iiifContent }) => {
     <Flex
       direction="column"
       style={{
-        width: "61.8%",
+        width: "38.2vw",
+        minWidth: "640px",
         height: "480px",
         backgroundColor: "var(--accent-1)",
         boxShadow: "6px 6px 29px var(--accent-5)",
@@ -31,7 +32,7 @@ const SplashWindow = ({ iiifContent }) => {
         position: "absolute",
         top: "-110px",
         overflow: "hidden",
-        right: "-110px",
+        left: "50%",
       }}
     >
       <Box

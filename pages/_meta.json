@@ -1,4 +1,9 @@
 {
+  "*": {
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "index": {
     "title": "Home",
     "display": "hidden",
@@ -7,37 +12,20 @@
       "footer": false,
       "sidebar": false,
       "toc": false,
-      "pagination": false,
-      "layout": "article"
+      "pagination": false
     }
   },
   "getting-started": {
-    "title": "Getting Started",
-    "theme": {
-      "breadcrumb": false
-    }
+    "title": "Getting Started"
   },
   "customize": {
-    "title": "Customize",
-    "theme": {
-      "breadcrumb": false
-    }
+    "title": "Customize"
   },
   "content": {
-    "title": "Content",
-    "theme": {
-      "breadcrumb": false
-    }
+    "title": "Content"
   },
   "deploy": {
-    "title": "Deploy",
-    "theme": {
-      "breadcrumb": false
-    }
-  },
-  "examples": {
-    "title": "Examples",
-    "type": "page"
+    "title": "Deploy"
   },
   "about": {
     "title": "About",
