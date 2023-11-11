@@ -9,7 +9,7 @@ const Splash = ({ children }) => {
 
   return (
     <Section size="3">
-      <Box style={{ position: "relative" }} pl="9">
+      <Box style={{ position: "relative" }} px="6">
         <Box>{children}</Box>
         <Window iiifContent={iiifContent} />
       </Box>

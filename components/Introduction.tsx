@@ -7,7 +7,7 @@ import React from "react";
 const Introduction = ({ heading, subHeading }) => {
   return (
     <Section size="2">
-      <Box style={{ width: "61.8%", minWidth: "390px" }}>
+      <Box style={{ width: "80%", minWidth: "400px" }}>
         <Heading
           size="9"
           mb="3"
@@ -21,7 +21,7 @@ const Introduction = ({ heading, subHeading }) => {
         </Heading>
         <Flex direction="column" gap="2">
           <Text size="4">
-            <Balancer>{subHeading}</Balancer>
+            <Balancer ratio={0.618}>{subHeading}</Balancer>
           </Text>
         </Flex>
         <Box pt="5">

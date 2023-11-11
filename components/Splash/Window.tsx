@@ -30,7 +30,7 @@ const SplashWindow = ({ iiifContent }) => {
         boxShadow: "6px 6px 29px var(--accent-5)",
         borderRadius: "5px",
         position: "absolute",
-        top: "-110px",
+        top: "-50px",
         overflow: "hidden",
         left: "50%",
       }}
