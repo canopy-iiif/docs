@@ -14,7 +14,7 @@ const Introduction = ({ heading, subHeading }) => {
             fontFamily: "var(--canopy-display-font)",
             letterSpacing: "-0.0382em",
             fontWeight: "400",
-            color: "var(--accent-12)",
+            color: "var(--gray-12)",
           }}
           dangerouslySetInnerHTML={{ __html: heading }}
         />
@@ -23,7 +23,7 @@ const Introduction = ({ heading, subHeading }) => {
         </Flex>
         <Box pt="5">
           <Flex gap="3">
-            <Link href="/docs">
+            <Link href="/getting-started">
               <Button size="3">Get Started</Button>
             </Link>
             <Button size="3" variant="outline">

@@ -18,7 +18,7 @@ const Logo = () => (
         font-weight: 400;
         font-size: 1.382rem !important;
         font-family: var(--canopy-display-font);
-        color: var(--accent-12);
+        color: var(--accent-11);
       }
       div {
         display: flex;

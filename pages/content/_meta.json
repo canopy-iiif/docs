@@ -1,4 +1,9 @@
 {
+  "*": {
+    "theme": {
+      "breadcrumb": true
+    }
+  },
   "markdown": "Markdown",
   "navigation": "Navigation",
   "layout": "Layout",

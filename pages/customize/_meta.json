@@ -1,4 +1,9 @@
 {
+  "*": {
+    "theme": {
+      "breadcrumb": true
+    }
+  },
   "search": "Search",
   "metadata": "Metadata",
   "featured": "Featured Items",

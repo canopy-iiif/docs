@@ -1,6 +1,7 @@
 {
   "index": {
     "title": "Home",
+    "display": "hidden",
     "theme": {
       "breadcrumb": false,
       "footer": false,
@@ -10,12 +11,29 @@
       "layout": "article"
     }
   },
-  "--": {
-    "type": "separator"
+  "getting-started": {
+    "title": "Getting Started",
+    "theme": {
+      "breadcrumb": false
+    }
   },
-  "docs": {
-    "title": "Docs",
-    "type": "page"
+  "customize": {
+    "title": "Customize",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "content": {
+    "title": "Content",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "deploy": {
+    "title": "Deploy",
+    "theme": {
+      "breadcrumb": false
+    }
   },
   "examples": {
     "title": "Examples",
