@@ -2,16 +2,9 @@ import { Callout } from "nextra/components";
 import { Steps } from "nextra/components";
 import { Box } from "@radix-ui/themes";
 
-# Getting Started
+# Get Started
 
-Canopy IIIF is built on a [Next.js](https://nextjs.org/docs) platform where production and development builds will follow Next.js documentation.
-
-**System Requirements**
-
-- Node.js 18.17 or later recommended.
-- macOS, Windows (including WSL), and Linux are supported.
-
-## Setup
+Have a project in mind? Let's get started!
 
 <Steps>
 
@@ -93,13 +86,15 @@ See [Options](/configuration) for more information regarding configuration.
   developer environment directly using GitHub Pages.
 </Callout>
 
-Now that you have a project and configuration file, you can run Canopy IIIF. The following command will start a development server at http://localhost:5001. The build process may take a few minutes depending on the size of your IIIF Collection and provider response times. A Collection of ~100 items should build in 30 seconds or less.
+Now that you have a project and configuration set, you can run Canopy IIIF.
 
 ```sh copy
 npm run dev
 ```
 
 #### Build process
+
+The build process may take a few minutes depending on the size of your IIIF Collection and provider response times. A Collection of ~100 items should build in 30 seconds or less.
 
 1. **Building** - Canopy retrieves the source IIIF Collection
 2. **Create Manifest listing** - Canopy retrives all IIIF Manifests in the Collection
@@ -170,7 +165,7 @@ Content on the home page is geared towards discovery of your IIIF Collection. Th
 
 #### Search page
 
-All Manifests in your IIIF Collection are now available as search results. In addition to full text search, results are filterable by defined metadata labels and available values. In the example _Korean Literary Collection_, there are 135 Manifests available for search. A query for **_poems_** returns 43 results.
+All Manifests in your IIIF Collection are now represented as results at the **/search** route. In addition to full text search, results are filterable by defined metadata labels and available values. In the example _Korean Literary Collection_, there are 135 items available for search. A query for **_poems_** returns 43 results.
 
 <Box m="9" my="6">
   ![canopy search results for poems](/docs/examples/korean-literary-search.png)
@@ -178,7 +173,7 @@ All Manifests in your IIIF Collection are now available as search results. In ad
 
 #### Work page
 
-All Manifests in your IIIF Collection are now available as individual work pages. Work pages are a single Manifest, its descriptive metadata, and various other IIIF properties. [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) is the defacto deep-zoom and A/V capable viewer in Canopy IIIF but other IIIF viewers can be easily configured.
+All Manifests in your IIIF Collection are now available as statically generated pages with a **/work/slug-generated-from-label** pattern. Each work represents a single Manifest, its descriptive metadata, and various other IIIF properties. [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) is the defacto deep-zoom and A/V capable viewer in Canopy IIIF but other IIIF viewers can be easily configured.
 
 <Box m="9" my="6">
   ![canopy work page for single result](/docs/examples/korean-literary-work.png)

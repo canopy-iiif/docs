@@ -26,7 +26,7 @@ const Introduction = ({ heading, subHeading }) => {
         </Flex>
         <Box pt="5">
           <Flex gap="3">
-            <Link href="/getting-started">
+            <Link href="/get-started">
               <Button size="3">Get Started</Button>
             </Link>
             <Button size="3" variant="outline">

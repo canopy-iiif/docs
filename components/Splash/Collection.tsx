@@ -8,15 +8,14 @@ import React from "react";
 
 const SplashCollection = ({ data }) => {
   const GridItem = ({ index }) => {
-    // create an array of 10 numbers ranging from 0.618 to 1.382
-    const numbers = Array.from(Array(10).keys()).map((i) => i / 10 + 0.618);
-    const ratio = numbers[Math.floor(Math.random() * 10)] as number;
+    const options = [0.618, 1, 1.382];
+    const ratio = options[index % 3];
 
     return (
       <Flex direction="column">
         <Box
           style={{
-            backgroundColor: "var(--accent-4)",
+            backgroundColor: " var(--accent-4)",
           }}
         >
           <AspectRatio ratio={ratio}>
@@ -88,7 +87,7 @@ const SplashCollection = ({ data }) => {
         </Flex>
         <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={1} />
-          <GridItem index={6} />
+          <GridItem index={16} />
           <GridItem index={11} />
           <GridItem index={16} />
         </Flex>
@@ -96,19 +95,16 @@ const SplashCollection = ({ data }) => {
           <GridItem index={2} />
           <GridItem index={7} />
           <GridItem index={12} />
-          <GridItem index={17} />
         </Flex>
         <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={3} />
           <GridItem index={8} />
           <GridItem index={13} />
-          <GridItem index={18} />
         </Flex>
         <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={4} />
           <GridItem index={9} />
           <GridItem index={14} />
-          <GridItem index={19} />
         </Flex>
       </Flex>
     </Box>

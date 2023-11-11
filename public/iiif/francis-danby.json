@@ -1,0 +1,289 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "http://example.org/iiif/collection/paintings_of_francis_danby",
+  "type": "Collection",
+  "label": {
+    "en": ["Paintings of Francis Danby"]
+  },
+  "items": [
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/116",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Mountain Torrent"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/e3d4f266-b9b0-4b05-a45b-121128b518b8",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 319
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/38658",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "A View across the Artist's Garden from his House at Exmouth, Devonshire"
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/f7d996a2-e654-4bb5-90e4-89b82909f39a",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 332
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/710",
+      "type": "Manifest",
+      "label": {
+        "en": ["Shipwreck"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/14e19b78-b026-4b5d-8c30-77242a8cef86",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 374
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/705",
+      "type": "Manifest",
+      "label": {
+        "en": ["Hampstead Heath, Sunset"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/f6177715-5854-4f00-a252-2a763bf0922e",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 357
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/4141",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Launch of \"La Sorciére\" on the Lake of Geneva"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/f96a8cb1-2f4e-4679-b1a6-973e052238a8",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 325
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/8945",
+      "type": "Manifest",
+      "label": {
+        "en": ["Sunset over a River Landscape"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/63e203db-8fc0-4aff-8683-f920edb297b1",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 335
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/38551",
+      "type": "Manifest",
+      "label": {
+        "en": ["Sunset at Sea after a Storm"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/cc02b7eb-4971-491f-83dc-e6d8634a1fde",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 315
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/703",
+      "type": "Manifest",
+      "label": {
+        "en": ["Children by a Brook"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/7f0162bc-ff34-4bc8-add8-8dbe255e63c2",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 398,
+          "height": 480
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/4907",
+      "type": "Manifest",
+      "label": {
+        "en": ["End of Lake Geneva"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/3b2a8073-aaa9-43eb-9afd-9eabd3915a62",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 313
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/709",
+      "type": "Manifest",
+      "label": {
+        "en": ["Study for 'Calypso's Grotto'"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/5e5690f4-e4fa-4677-afdf-e6819467bd4f",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 327
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/706",
+      "type": "Manifest",
+      "label": {
+        "en": ["A Mountain Chieftain's Funeral"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/54cc4e6a-a976-4680-94be-c56431ec3ce9",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 300
+        }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "https://manifests.collections.yale.edu/ycba/obj/702",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Painter's Holiday"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/12e6866f-0a9f-4865-8b78-5db3b7533bc6",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 336
+        }
+      ]
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/ycba/obj/707",
+      "type": "Manifest",
+      "label": {
+        "en": ["Boat Building near Dinan, Brittany"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/39f6197a-6b1b-4b71-bcb7-9a09e2325923",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 371
+        }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "https://manifests.collections.yale.edu/ycba/obj/387",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Avon Gorge"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/bd499274-8a09-4ea6-8763-0d9f92cb47b5",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 356,
+          "height": 480
+        }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "https://manifests.collections.yale.edu/ycba/obj/387",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Avon Gorge"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/bd499274-8a09-4ea6-8763-0d9f92cb47b5",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 356,
+          "height": 480
+        }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "https://manifests.collections.yale.edu/ycba/obj/8943",
+      "type": "Manifest",
+      "label": {
+        "en": ["The Avon Gorge, Looking toward Clifton"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/b5f54913-fd21-44d3-bfaa-5f934552dd21",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 319
+        }
+      ]
+    },
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "id": "https://manifests.collections.yale.edu/ycba/obj/8947",
+      "type": "Manifest",
+      "label": {
+        "en": ["Ruins of a Monastery with Farmyard Animals"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://media.collections.yale.edu/thumbnail/ycba/ca4afcd8-22af-4e9f-b5e6-961c335869d8",
+          "type": "Image",
+          "format": "image/jpeg",
+          "width": 480,
+          "height": 359
+        }
+      ]
+    }
+  ]
+}

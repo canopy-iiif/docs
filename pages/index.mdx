@@ -11,30 +11,29 @@ import { Flex, Box } from "@radix-ui/themes";
   ```json 
   {
     "@context": "http://iiif.io/api/presentation/3/context.json",
-    "id": "https://api.dc.library.northwestern.edu/api/v2/collections/3121f8ee-5265-4b19-bae3-59f96e9ac01a?as=iiif",
+    "id": "https://collections.britishart.yale.edu/iiif/collection/paintings_of_francis_danby",
     "type": "Collection",
-    "label": { 
-      "en": [ "Aldridge Collection" ] 
+    "label": {
+      "en": ["Paintings of Francis Danby"]
     },
     "items": [
       {
-        "id": "https://api.dc.library.northwestern.edu/api/v2/works/9a73ffd7-51f0-45f5-9a87-10f7656d9fce?as=iiif",
+        "id": "https://manifests.collections.yale.edu/ycba/obj/116",
         "type": "Manifest",
-        "label": { 
-          "en": [ "Michel Kovatchevitch and Vivian Dalrymple correspondence" ]
+        "label": {
+          "en": ["The Mountain Torrent"]
         }
       },
       {
-        "id": "https://api.dc.library.northwestern.edu/api/v2/works/ce94e4f6-d038-4d90-93e1-d6b8900ca038?as=iiif",
+        "id": "https://manifests.collections.yale.edu/ycba/obj/38658",
         "type": "Manifest",
         "label": {
-          "en": [ "Correspondence, Mar 22, 1954" ]
+          "en": ["A View across the Artist's Garden from his House at Exmouth, Devonshire"]
         }
-      },
-      ...
+      }
     ]
   }
-  ``` 
+```
 </Splash>
 
 ### What is Canopy?
@@ -46,21 +45,21 @@ import { Flex, Box } from "@radix-ui/themes";
 <Flex gap="6">
 
 <Box>
-    #### Research
+  #### Research
 
-    Researchers can curate and aggregate content from various providers and add their own context to resources
-
-</Box>
-<Box>
-    #### Exhibits
-
-    Libraries, museums, and archives can create digital exhibits from the works in their repositories
+Researchers can curate and aggregate content from various providers and add their own context to resources
 
 </Box>
 <Box>
-    #### Minimal infrastructure
+  #### Exhibits
 
-    Small-scale, headless infrastructure for institutions with limited resources to build their own digital collections application
+Libraries, museums, and archives can create digital exhibits from the works in their repositories
+
+</Box>
+<Box>
+  #### Minimal infrastructure
+
+Small-scale, headless infrastructure for institutions with limited resources to build their own digital collections application
 
 </Box>
 </Flex>
@@ -68,3 +67,7 @@ import { Flex, Box } from "@radix-ui/themes";
 ### Features
 
 Canopy IIIF extends the features of Next.js to produce a full-text search index using FlexSearch, provides support for both IIIF Presentation API 2.x and 3.0 specifications, and automatically generates facets based on the curated metadata labels and values found within Manifests. The platform’s API routes return IIIF collections and allow for users to reference IIIF resources internally and externally. In addition to these features, the product roadmap and planned features include expanding internationalization support, generating interactive maps and timelines based on the presence of navPlace and navDate properties, and leveraging IIIF Content State and Change Discovery APIs.
+
+```
+
+```
