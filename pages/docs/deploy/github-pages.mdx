@@ -1,0 +1,43 @@
+import { Steps } from "nextra/components";
+
+# GitHub Pages
+
+Hosting on [GitHub Pages](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) can be done easily
+in just a few steps.
+
+<Steps>
+
+### Create your template repository
+
+Click the "Use this template" button at the top of the [Canopy-IIIF](https://github.com/canopy-iiif/canopy-iiif)
+repository to create a new repository based on this template. Select "Create a new repository" and choose the GitHub
+account or organization you want to copy the contents to from the **Owner** dropdown. Choose a name for your new repository
+and entire it in the **Repository name** field. Unless you have a paid GitHub account, select **Public**. Click the
+"Create repository" button to create the new repository.
+
+![Use Template](/docs/use-template.png)
+
+### Adjust repository settings
+
+    Once the repository is created, press the **Settings** button and **Actions** → **General** under _Code and automation_.
+
+Then select **Read and write permissions** under _Workflow permissions_ and press **Save**. This allows the GitHub
+workflow to run and the static Canopy output to be deployed to a new branch.
+![Workflow Permissions](/docs/workflow-permissions.png)
+
+### Modify environmmental variables
+
+Next, modify the `.github/workflows/gh-pages.deploy.yml` file in repository for the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH`
+to be relative to the new repository. After changing these settings, commit your change and trigger the action to run.
+Once the action has run, the action indicator should change from a _red X_ to a _green check mark_ and a new branch called
+**gh-pages** will be created.
+![Modify gh-pages.deploy.yml](/docs/modify-gh-pages-deploy.png)
+
+### Watch the build
+
+Once the **gh-pages** branch exists and the action indicator is a _green check mark_, again press the Settings button.
+Under _Code and automation_, click **Pages** and select **gh-pages** from the **Branch** dropdown under _Build and deployment_
+and click \*_Save_. Now your Canopy site will be active at the URL you defined in the `NEXT_PUBLIC_URL` setting.
+![Set gh-pages in Settings](/docs/set-gh-pages.png)
+
+</Steps>

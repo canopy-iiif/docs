@@ -17,6 +17,7 @@ const config: DocsThemeConfig = {
     defaultTheme: "light",
   },
   primaryHue: 225,
+  primarySaturation: 76,
   sidebar: {
     defaultMenuCollapseLevel: 0,
     autoCollapse: true,

@@ -1,6 +1,19 @@
-Canopy-IIIF can be easily deployed to GitHub pages or any JAMstack hosting service.
+import { Cards, Card } from "nextra/components";
+import { Em, Heading, Section, Strong } from "@radix-ui/themes";
 
-The following sections will guide you through the process of deploying Canopy-IIIF to a few of these options.
+# Deploying your project
 
-- [Deploying to GitHub Pages](/deploy/github)
-- [Deploying to Vercel](/deploy/vercel)
+<Section size="2">
+
+<Heading weight="medium">
+  Canopy is <Strong>Static</Strong>-first!
+</Heading>
+
+That means that Canopy IIIF is designed to be deployed as a statically generated website. This is a great option for many projects, as it is fast, secure, and easy to deploy. However, if your project requires server-side components (e.g., [API routing](/api-routes)), Canopy can be deployed to any Next.js capable hosting service.
+
+</Section>
+
+<Cards>
+  <Card title="GitHub Pages" href="/deploy/github-pages" />
+  <Card title="Vercel" href="/deploy/vercel" />
+</Cards>
