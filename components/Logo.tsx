@@ -1,11 +1,12 @@
 import Image from "next/image";
+import React from "react";
 
 const Logo = () => (
   <div>
     <Image
       id="canopy-iiif-logo"
       data-name="canopy-iiif-icon"
-      src="/assets/canopy-iiif-icon.png"
+      src="/docs/assets/canopy-iiif-icon.png"
       alt="Canopy IIIF"
       width="32"
       height="32"
