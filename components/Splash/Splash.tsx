@@ -4,7 +4,7 @@ import React from "react";
 import Window from "./Window";
 
 const Splash = ({ children }) => {
-  const iiifContent = `/iiif/francis-danby.json`;
+  const iiifContent = `/docs/iiif/francis-danby.json`;
 
   return (
     <Section size="3">
