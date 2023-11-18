@@ -9,11 +9,12 @@ point Feature within the navPlace properties found throughout the manifests of t
 <Section size="2">
 
   <Heading weight="medium">
-    navPlace Properties in Canopy
+    What are <Strong>navPlace</Strong> Properties in Canopy
   </Heading>
 
   navPlace properties are defined by the <Link href={"https://iiif.io/api/extension/navplace/"}>navPlace extension</Link>.
-  An example navPlace property is shown below:
+
+  A navPlace property may look like this:
 
   ```json
   {
@@ -43,6 +44,17 @@ point Feature within the navPlace properties found throughout the manifests of t
     }
   }
   ````
+
+</Section>
+
+<Section size="2">
+
+  <Heading weight="medium">
+    Does Canopy Leverage All <Strong>navPlace</Strong> Properties
+  </Heading>
+
+  Not currently. Canopy only leverages the <Strong>navPlace</Strong> properties found in manifests with geometry
+  properties of type <Strong>Point</Strong>.
 
 </Section>
 
