@@ -6,15 +6,18 @@ The Map component enhances Canopy sites with optional geospatial navigation, all
 collection through an interactive map. When activated, this component displays a map featuring markers representing each
 point Feature within the navPlace properties found throughout the manifests of the overarching collection.
 
+![Canopy Map Example](/docs/map-example.png)
+
 <Section size="2">
 
   <Heading weight="medium">
-    What are <Strong>navPlace</Strong> Properties in Canopy
+    What are <Strong>navPlace</Strong> Properties
   </Heading>
 
   navPlace properties are defined by the <Link href={"https://iiif.io/api/extension/navplace/"}>navPlace extension</Link>.
 
-  A navPlace property may look like this:
+  A navPlace property may look like this and identifies a single or multiple geographic areas pertinent to a resource
+  using a GeoJSON Feature Collection containing one or more Features.:
 
   ```json
   {
@@ -53,8 +56,8 @@ point Feature within the navPlace properties found throughout the manifests of t
     Does Canopy Leverage All <Strong>navPlace</Strong> Properties
   </Heading>
 
-  Not currently. Canopy only leverages the <Strong>navPlace</Strong> properties found in manifests with geometry
-  properties of type <Strong>Point</Strong>.
+  <Strong>Not currently</Strong>. Canopy only leverages the `navPlace` properties found in manifests with
+   geometry properties of type `Point`.
 
 </Section>
 
@@ -64,9 +67,10 @@ point Feature within the navPlace properties found throughout the manifests of t
     Interacting with the Map
   </Heading>
 
-  Clicking on a marker will display the label of the Feature and the thumbnail of its parent manifest.
+  From the map component, clicking on a marker will display the label of the Feature and the thumbnail of its parent
+  manifest.
 
-  ![map markers](/docs/clicked_marker.png)
+  ![map markers](/docs/clicked-marker.png)
 
   Clicking the thumbnail or the label will navigate the user to the corresponding work page in Canopy.
 
@@ -101,18 +105,18 @@ point Feature within the navPlace properties found throughout the manifests of t
     }
     ```
 
-    The `defaultBounds` property defines the initial view of the map. This property is an array of arrays of longitude
-    and latitude coordinates. Unless there are no markers found within the collection, this property will be ignored.
+    The `defaultBounds` property defines the coordinates of the initial view of the map. This property is an array of
+    arrays of longitude and latitude coordinates. Unless there are no markers found within the manifests of the
+    overarching collection, this property will be ignored.
 
     The `icon` property defines the icon used to represent each marker on the map. The `iconUrl` property is the path to
     the image file used as the icon. The `iconSize` property is an array of the width and height of the icon in pixels.
-    The `iconAnchor` property is an array of the x and y coordinates of the icon's anchor point in pixels.
+    The `iconAnchor` property is an array of the x and y coordinates of the icon's anchor point in pixels. These values
+    are used to position the icon relative to its marker's coordinates.
 
     The `tileLayers` property defines the tile layers used to render the map. This property is an array of objects, each
     of which defines a tile layer. Each tile layer object must have a `name` property, a `url` property, and an `attribution`.
     The titleLayer at index 0 will be the default tile layer used to render the map. The other tile layers will be available
     to the user as options in the map's layer control which is available in the upper right corner of the map.
-
-
 
 </Section>
