@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      NEXT_PUBLIC_URL: https://canopy-iiif.github.io
-      NEXT_PUBLIC_BASE_PATH: /docs
-
     strategy:
       matrix:
         node-version: [18.x]
