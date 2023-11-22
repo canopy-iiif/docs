@@ -15,17 +15,22 @@
       "pagination": false
     }
   },
+  "-": {
+    "title": "Docs",
+    "type": "separator"
+  },
   "get-started": {
     "title": "Get Started"
   },
-  "customize": {
-    "title": "Customize"
+  "configuration": {
+    "title": "Configuration"
   },
   "content": {
     "title": "Content"
   },
-  "deploy": {
-    "title": "Deploy"
+  "--": {
+    "title": "Guides",
+    "type": "separator"
   },
   "about": {
     "title": "About",

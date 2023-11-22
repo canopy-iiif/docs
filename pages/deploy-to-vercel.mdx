@@ -1,0 +1,52 @@
+import { Callout, Steps } from "nextra/components";
+import { Text, Section } from "@radix-ui/themes";
+
+# Guide: Deploy to Vercel
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Canopy can be deployed to a Next.js [managed hosting
+    service](https://nextjs.org/docs/pages/building-your-application/deploying#managed-nextjs-with-vercel).
+    Doing so will allow you to take advantage of server-side components (e.g.,
+    [API routing](/api-routes)). This guide will walk you through the process of
+    deploying Canopy to Vercel.
+  </Text>
+
+</Section>
+
+<Callout type="info">
+  Requires a [Vercel](https://vercel.com/) account.{" "}
+</Callout>
+
+## Use Case
+
+You are developer tasked with using Canopy and leveraging API routing to serve the `/api/search`
+endpoint as IIIF for Collections-as-data purposes. As part of this requirement, you need to deploy
+the application to a managed hosting service and have selected Vercel for its Next.js compatibility.
+
+## Implementation
+
+<Steps>
+
+### Import the Repository
+
+After you've logged in to Vercel, click the **Start deploying** button. Then, from the **Let's Build Something New**
+screen, click the **Import** button next to the repository you've created.
+
+![Import Repository](/docs/import-repository.png)
+
+### Configure
+
+Next, give your repository a name a press **Deploy**. Vercel will then build and deploy your application and make it available at `${YOUR-PROJECT-NAME}.vercel.app`.
+
+![Deploy Repository](/docs/configure-a-project.png)
+
+### Environment Variables
+
+Finally, edit the `.env` in your repository on Github and make sure that the `NEXT_PUBLIC_URL` variable and
+`NEXT_PUBLIC_BASE_PATH` variables match your project in Vercel. By default, the `NEXT_PUBLIC_URL` variable should be
+similar to your project name and you should not have to modify `NEXT_PUBLIC_BASE_PATH`.
+
+![Set Environment Variables](/docs/next-public-url.png)
+
+</Steps>

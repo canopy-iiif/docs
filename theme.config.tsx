@@ -1,6 +1,7 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import Logo from "./components/Logo";
 import React from "react";
+import TitleComponent from "@components/TitleComponent";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -19,8 +20,10 @@ const config: DocsThemeConfig = {
   primaryHue: 225,
   primarySaturation: 76,
   sidebar: {
-    defaultMenuCollapseLevel: 0,
+    defaultMenuCollapseLevel: 1,
     autoCollapse: true,
+    titleComponent: (props) => <TitleComponent {...props} />,
+    toggleButton: true,
   },
 };
 
