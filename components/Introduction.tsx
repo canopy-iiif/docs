@@ -29,9 +29,11 @@ const Introduction = ({ heading, subHeading }) => {
             <Link href="/get-started">
               <Button size="3">Get Started</Button>
             </Link>
-            <Button size="3" variant="outline">
-              View Examples
-            </Button>
+            <Link href="/configuration">
+              <Button size="3" variant="outline">
+                Configuration
+              </Button>
+            </Link>
           </Flex>
         </Box>
       </Box>

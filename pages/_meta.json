@@ -19,9 +19,6 @@
     "title": "Docs",
     "type": "separator"
   },
-  "get-started": {
-    "title": "Get Started"
-  },
   "configuration": {
     "title": "Configuration"
   },
@@ -31,6 +28,9 @@
   "--": {
     "title": "Guides",
     "type": "separator"
+  },
+  "get-started": {
+    "title": "Create a Project"
   },
   "about": {
     "title": "About",

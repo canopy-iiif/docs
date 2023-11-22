@@ -13,11 +13,20 @@ const separatorStyling = {
   marginBottom: "-0.5em",
 };
 
+const phraseRewrites = ["navPlace"];
+
 const TitleComponent: React.FC<TitleComponentProps> = ({ title, type }) => {
+  // search and replace words for words in the title property using possible values in phraseRewrites ignoring case
+
+  const titleScrubbed = phraseRewrites.reduce((acc, phrase) => {
+    const regex = new RegExp(phrase, "gi");
+    return acc.replace(regex, phrase);
+  }, title);
+
   if (type === "separator") {
-    return <span style={separatorStyling}>{title}</span>;
+    return <span style={separatorStyling}>{titleScrubbed}</span>;
   }
-  return <>{title}</>;
+  return <>{titleScrubbed}</>;
 };
 
 export default TitleComponent;
