@@ -1,9 +1,4 @@
 {
-  "*": {
-    "theme": {
-      "breadcrumb": false
-    }
-  },
   "index": {
     "title": "Home",
     "display": "hidden",
@@ -24,6 +19,11 @@
   },
   "content": {
     "title": "Content"
+  },
+  "*": {
+    "theme": {
+      "breadcrumb": false
+    }
   },
   "--": {
     "title": "Guides",
