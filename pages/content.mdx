@@ -1,0 +1,22 @@
+# Contextual Content
+
+Canopy allows for easy creation of contextual content that supports the automatically generated content at `/`, `search/` and `works/`. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
+
+### Authoring new Content
+
+Canopy IIIF is designed to work with Markdown using the [MDX](https://mdxjs.com/) library. This allows us to cleanly leverage custom Canopy components alongside our Markdown content. Markdown content can be edited in the `/content` directory at the root of your Canopy IIIF project.
+
+See the [Markdown Example](https://canopy-iiif.github.io/canopy-iiif/about/example) page for additional information.
+
+```mdx copy filename="/content/about/new-page.mdx"
+---
+title: New Page Title
+navigation: "about"
+---
+
+# New Page Title
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget odio vitae diam aliquam sodales. Sed vitae eros vitae urna aliquam aliquet. Donec euismod, nisl vitae aliquam ultricies, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec vitae nisl vitae nisl aliquam aliquet. Donec euismod, nisl vitae aliquam ultricies, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.
+
+## Content continues...
+```

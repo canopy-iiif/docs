@@ -1,0 +1,39 @@
+import { FileTree } from "nextra/components";
+
+# Development
+
+## Environment
+
+When you are ready to deploy your site, you will need to modify environment variables to reflect how your site is hosted.
+
+### Updating
+
+Edit the `.env` file at the root of the working directory to reflect your site's configuration.
+
+The `NEXT_PUBLIC_URL` variable is used to declare the base URL of your site. This base url is critical to routing of works in Canopy and wiring up canonical links in SEO.
+
+If you plan to host your site in a subdirectory or subdomain, you will need to set the `NEXT_PUBLIC_BASE_PATH`to reflect this. For example, if your site is hosted at _https://example.org/exhibit_, you would set the value to `/canopy`.
+
+```sh
+NEXT_PUBLIC_URL = "https://canopy-iiif.vercel.app"
+NEXT_PUBLIC_BASE_PATH = ""
+```
+
+## Avoid Code Conflicts
+
+To avoid potential code conflicts on future release updates, it is advised not to update the following integrated Canopy pages in the Next.js pages directory.
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="pages" defaultOpen>
+      <FileTree.Folder name="api" />
+      <FileTree.Folder name="works" />
+      <FileTree.File name="index.tsx" />
+      <FileTree.File name="map.tsx" />
+      <FileTree.File name="metadata.tsx" />
+      <FileTree.File name="search.tsx" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+**Note:** Future considerations will be delivered upon for updating content within these pages.

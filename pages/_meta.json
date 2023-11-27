@@ -1,9 +1,4 @@
 {
-  "*": {
-    "theme": {
-      "breadcrumb": false
-    }
-  },
   "index": {
     "title": "Home",
     "display": "hidden",
@@ -15,23 +10,61 @@
       "pagination": false
     }
   },
-  "get-started": {
-    "title": "Get Started"
+  "-": {
+    "title": "Docs",
+    "type": "separator"
   },
-  "customize": {
-    "title": "Customize"
+  "configuration": {
+    "title": "Configuration"
   },
   "content": {
     "title": "Content"
   },
-  "deploy": {
-    "title": "Deploy"
+  "development": {
+    "title": "Development"
+  },
+  "*": {
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "--": {
+    "title": "Guides",
+    "type": "separator"
+  },
+  "get-started": {
+    "title": "Create a Project"
+  },
+  "documentation": {
+    "title": "Documentation",
+    "type": "menu",
+    "items": {
+      "configuration": {
+        "title": "Configuration",
+        "href": "/configuration"
+      },
+      "content": {
+        "title": "Adding Content",
+        "href": "/content"
+      },
+      "development": {
+        "title": "Development",
+        "href": "/development"
+      },
+      "guides": {
+        "title": "User Guides",
+        "href": "/guides"
+      }
+    }
   },
   "about": {
     "title": "About",
     "type": "page"
   },
-  "contact": {
+  "guides": {
+    "display": "hidden"
+  },
+  "iiif": {
     "title": "What is IIIF? ↗",
     "type": "page",
     "href": "https://iiif.io/",
