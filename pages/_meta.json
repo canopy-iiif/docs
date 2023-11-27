@@ -35,11 +35,36 @@
   "get-started": {
     "title": "Create a Project"
   },
+  "documentation": {
+    "title": "Documentation",
+    "type": "menu",
+    "items": {
+      "configuration": {
+        "title": "Configuration",
+        "href": "/configuration"
+      },
+      "content": {
+        "title": "Adding Content",
+        "href": "/content"
+      },
+      "development": {
+        "title": "Development",
+        "href": "/development"
+      },
+      "guides": {
+        "title": "User Guides",
+        "href": "/guides"
+      }
+    }
+  },
   "about": {
     "title": "About",
     "type": "page"
   },
-  "contact": {
+  "guides": {
+    "display": "hidden"
+  },
+  "iiif": {
     "title": "What is IIIF? ↗",
     "type": "page",
     "href": "https://iiif.io/",
