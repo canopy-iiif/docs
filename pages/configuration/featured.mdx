@@ -1,0 +1,12 @@
+# Featured Manifests
+
+You can inform Canopy IIIF of featured Manifests by providing an array of ids. These must be within the referenced collection resource and the Manifest URIs must be an exact match. These Manifests will render throughout the interface in featured components.
+
+**Warning:** In the current pre-release, featured Manifests must have an Image body on the first Canvas.
+
+```json
+"featured": [
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+]
+```

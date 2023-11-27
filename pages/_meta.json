@@ -20,6 +20,9 @@
   "content": {
     "title": "Content"
   },
+  "development": {
+    "title": "Development"
+  },
   "*": {
     "theme": {
       "breadcrumb": false
