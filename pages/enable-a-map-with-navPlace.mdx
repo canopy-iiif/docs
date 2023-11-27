@@ -1,0 +1,106 @@
+# Enable a Map with navPlace Properties
+
+The Map component enhances Canopy sites with optional geospatial navigation, allowing users to explore the underlying
+collection through an interactive map. When activated, this component displays a map featuring markers representing each
+point Feature within the navPlace properties found throughout the manifests of the overarching collection.
+
+![Canopy Map Example](/docs/map-example.png)
+
+## What are **navPlace** Properties
+
+navPlace properties are defined by the [navPlace extension](https://iiif.io/api/extension/navplace/).
+
+A navPlace property may look like this and identifies a single or multiple geographic areas pertinent to a resource
+using a GeoJSON Feature Collection containing one or more Features.:
+
+```json
+
+{
+  "navPlace": {
+    "id": "https://digital.lib.utk.edu/notdereferenceable/featurecollection//1",
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "https://digital.lib.utk.edu/notdereferenceable/feature/1",
+        "type": "Feature",
+        "properties": {
+          "label": {
+            "en": [
+              "Interview with Seemona and Daniel Whaley, 2019-09-20 -- Discussion of Gatlinburg, TN"
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.51189,
+            35.71453
+          ]
+        }
+      }
+    ]
+  }
+}
+````
+
+## Does Canopy Leverage All **navPlace** Properties
+
+**Not currently**. Canopy only leverages the `navPlace` properties found in manifests with geometry properties of type
+`Point`.
+
+## Interacting with the Map
+
+From the map component, clicking on a marker will display the label of the Feature and the thumbnail of its parent
+manifest.
+
+![map markers](/docs/clicked-marker.png)
+
+Clicking the thumbnail or the label will navigate the user to the corresponding work page in Canopy.
+
+
+## Customizing the Map
+
+The Map component can be enabled within `options.json` by switching the value of `enabled` from `false` to `true`.
+
+```json copy filename="config/options.json"
+
+  {
+    "map": {
+      "defaultBounds": [[51.505, -0.09]],
+      "enabled": true,
+      "icon": {
+        "iconUrl": "images/marker-icon.png",
+        "iconSize": [24, 36],
+        "iconAnchor": [12, 36]
+      },
+      "tileLayers": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+        }
+      ]
+    }
+  }
+
+```
+
+### defaultBounds
+
+The `defaultBounds` property defines the coordinates of the initial view of the map. This property is an array of
+arrays of longitude and latitude coordinates. Unless there are no markers found within the manifests of the
+overarching collection, this property will be ignored.
+
+### icon
+
+The `icon` property defines the icon used to represent each marker on the map. The `iconUrl` property is the path to
+the image file used as the icon. The `iconSize` property is an array of the width and height of the icon in pixels.
+The `iconAnchor` property is an array of the x and y coordinates of the icon's anchor point in pixels. These values
+are used to position the icon relative to its marker's coordinates.
+
+### tileLayers
+
+The `tileLayers` property defines the tile layers used to render the map. This property is an array of objects, each
+of which defines a tile layer. Each tile layer object must have a `name` property, a `url` property, and an `attribution`.
+The titleLayer at index 0 will be the default tile layer used to render the map. The other tile layers will be available
+to the user as options in the map's layer control which is available in the upper right corner of the map.
