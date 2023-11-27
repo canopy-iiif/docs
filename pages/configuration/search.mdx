@@ -1,0 +1,51 @@
+# Search
+
+Search options can be configured in `config/options.json`. By default, the search index is included but can be disabled by setting `enabled: false`. If the search index is enabled, the label property on the manifest is always indexed. The properties of the `metadata` property are also indexed by default, but this can be modified to have these values not be indexed at all by setting `search.index.metadata.enabled` to `false`. Furthermore, all `metadata` values may be indexed OR you may specify only the properties that are specified in `config/canopy.json` by modifying `search.index.metadata.all`.
+
+The only property that can be indexed outside of `metadata` and `label` currently is `summary`. This is configured with `search.index.summary.enabled` .
+
+## FlexSearch Customization
+
+Users can customize their [FlexSearch configuration](https://github.com/nextapps-de/flexsearch#options) using `search.flexSearch` to fit around the source Collection and its Manifest `label`, `metadata`, and `summary` properties. Customizations range from defining language-specific options such as `charset` and `stemmer`, as well as scoring options like `resolution` and `depth`.
+
+### Default Search Configuration
+
+```json
+"search": {
+  "enabled": true,
+  "flexSearch": {
+    "charset": "latin:extra",
+    "optimize": true,
+    "tokenize": "strict",
+    "bidirectional": false,
+    "document": {
+      "index": [
+        {
+          "field": "label",
+          "tokenize": "full",
+          "resolution": 9,
+          "depth": 3,
+          "bidirectional": true
+        },
+        {
+          "field": "metadata",
+          "resolution": 2
+        },
+        {
+          "field": "summary",
+          "resolution": 1
+        }
+      ]
+    }
+  },
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
+  }
+}
+```
