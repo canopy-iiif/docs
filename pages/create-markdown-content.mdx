@@ -58,7 +58,7 @@ navigation: "about"
 This a sample page for scholarly content with historical context relating to the [Nez Percé](https://en.wikipedia.org/wiki/Nez_Perce), also known as the Nimíipuu.
 ```
 
-- **Edit** the `content/about/_meta.json` file and **Add** the new menu item to the array.
+- **Edit** the `content/about/_meta.json` file and **Add** the new menu item to the array. Note that the `/about/nez-perce` path matches the relative path of the Markdown file.
 
 ```json copy filename="content/about/_meta.json"
 [
@@ -114,7 +114,7 @@ The IIIF viewer is now rendered at the bottom of the page. The viewer is respons
 
 ### Reference Collection Items
 
-Users can link scholarly content to items in their collection using the `referencedManifests` front matter key. This key takes an array of IIIF Manifest URIs. The Manifests MUST be in the source IIIF Collection of the Canopy project.
+As a digital humanist, you might have authored a series of essays in Markdown (in the `/content` directory), in which you wish to reference or cite one or more items in the source IIIF Collection. Canopy offers an easy method for linking scholarly content to items in their collection using the `referencedManifests` front matter key. This key takes an array of IIIF Manifest URIs. The Manifests MUST be in the source IIIF Collection of the Canopy project.
 
 - **Add** the `referencedManifests` key to the front matter with an array of Manifest URIs.
 - **Add** a `<ReferencedItems />` component to bottom of our Markdown file. This will render the items as Figures in a responsive grid. Each item will have output relative local link to the item, a `thumbnail`, and the `label`.
