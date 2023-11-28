@@ -1,0 +1,65 @@
+import { Callout, Steps } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# Customize the Search Index
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Under the hood Canopy uses
+    [FlexSearch](https://github.com/nextapps-de/flexsearch) to power the search
+    index. FlexSearch is a full-text, search library that is fast and easy to
+    use. It is also highly customizable. Canopy provides a number of ways to
+    customize the search index.
+  </Text>
+</Section>
+
+## Use Case
+
+You are building a digital exhibit featuring Arabic manuscripts. For example, this NUL Collection of [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c). The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic and English text in its `label` and `summary` properties. You need to search the exhibit by both Arabic and English text values. You also need to support text from the Manifest's `summary` in search results.
+
+## Implementation
+
+<Steps>
+
+### Support additional language encoding(s)
+
+1. Open `/config/options.json` and add support for Arabic text.
+2. Add `"arabic:extra"` to the `search.flexSearch.charset` property.
+
+```json filename="config/options.json"
+"search": {
+    "flexSearch": {
+        ...
+      "charset": ["latin:extra", "arabic:extra"],
+        ...
+    }
+}
+```
+
+### Include summary in search results
+
+In `/config/options.json` update the value of `search.index.summary.enabled` to be `true`.
+
+```json filename="config/options.json"
+
+"search": {
+    "index": {
+        ...
+      "summary": {
+        "enabled": true
+      }
+    }
+}
+```
+
+### Validate multi language search
+
+After updating `/config/options.json` restart the development server and now you'll be able to search by Arabic text.
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-search-arabic.png)
+</Box>
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-search-english.png)
+</Box>
+</Steps>
