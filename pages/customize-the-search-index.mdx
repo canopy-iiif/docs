@@ -7,9 +7,9 @@ import { Box, Text, Section } from "@radix-ui/themes";
   <Text size="4" mt="9">
     Under the hood Canopy uses
     [FlexSearch](https://github.com/nextapps-de/flexsearch) to power the search
-    index. FlexSearch is a full-text, memory efficient, search library that is fast and easy to
-    use. It is also highly customizable. Canopy provides a number of ways to
-    customize the search index.
+    index. FlexSearch is a full-text, memory efficient, search library that is
+    fast and easy to use. It is also highly customizable. Canopy provides a
+    number of ways to customize the search index.
   </Text>
 </Section>
 
@@ -37,13 +37,47 @@ You'd like to [customize search configuration](/configuration/search) in the fol
 1. Open `/config/options.json` and add support for Arabic text.
 2. Add `"arabic:extra"` to the `search.flexSearch.charset` property.
 
-```json filename="config/options.json"
-"search": {
+```json filename="config/options.json" {7}
+{
+  ...
+  "search": {
+    "enabled": true,
     "flexSearch": {
-        ...
+      "bidirectional": false,
       "charset": ["latin:extra", "arabic:extra"],
-        ...
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": true
+      }
     }
+  },
+  ...
 }
 ```
 
@@ -51,38 +85,94 @@ You'd like to [customize search configuration](/configuration/search) in the fol
 
 ### Include summary in search results
 
-1. In `/config/options.json` update the value of `search.index.summary.enabled` to be `true`.
+<Callout type="info">
+  Canopy IIIF's [default search configuration](/configuration/search), indexes
+  only a Work Manifest's `label` and `metadata` values.
+</Callout>
 
-```json filename="config/options.json"
+To include a Manifest's `summary` value in search results, you'll need to update the `search.index.summary.enabled` property.
 
-"search": {
+1. In `/config/options.json` set the value of `search.index.summary.enabled` to be `true`.
+
+```json filename="config/options.json" {36}
+{
+  ...
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": ["latin:extra", "arabic:extra"],
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
     "index": {
-        ...
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
       "summary": {
         "enabled": true
       }
     }
+  },
+  ...
 }
 ```
 
 2. Restart your development server to see the changes.
 
-### Customize Manifest metadata in search results
+### Include custom metadata in search results
+
+In `/config.canopy.json`, you can index all, part, or none of a Work Manifest's `metadata` values.
+
+<Callout type="info">
+  By default, Canopy IIIF indexes all metadata fields.
+</Callout>
+
+In this example, we only want to target specific metadata fields, "Date", "Subject",
+"Contributor", and "Alternate Title".
 
 1. Open `/config/canopy.json`
-2. Update both `dev.metadata` and `prod.metadata` to include the metadata fields you'd like exposed in search results. (In the [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Contributor" and "Alternate Title" as `metadata` items.)
+2. Depending on which environment you'd like to target (`dev` or `prod`) provide an array of metadata fields you'd like exposed in search results. (In the [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Date", "Subject", "Contributor" and "Alternate Title" as `metadata` items)
 
-```json filename="config/canopy.json"
-"dev": {
-    ...
+In this example, we'll update the `dev` configuration:
+
+```json filename="config/canopy.json" {10}
+{
+  "dev": {
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif"
+    ],
+    "label": {
+      "none": ["Western Africa Manuscripts"]
+    },
     "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
-    ...
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    }
   },
-"prod": {
-    ...
-    "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
-    ...
-  },
+  "prod": {...}
+}
 ```
 
 3. Restart your development server to see the changes.
