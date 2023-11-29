@@ -1,6 +1,16 @@
 # Locale Preferences
 
-Canopy IIIF supports locale preferences for user interface language. The default configuration language is English; however, additional languages can be defined. For more information, [see Locale](#locale).
+Canopy IIIF supports locale preferences for user interface language.
+
+## Properties
+
+For each Locale, the following properties are required:
+
+| Property | Type     | Description                            |
+| :------- | :------- | :------------------------------------- |
+| `config` | `string` | Path to the locale configuration file. |
+| `label`  | `string` | Label for the locale.                  |
+| `lang`   | `string` | BCP 47 language code for the locale.   |
 
 ```json copy
 "locales": [

@@ -5,7 +5,6 @@ import { Callout, Cards, Card } from "nextra/components";
 The Canopy IIIF build process will read from a custom configuration file at config/canopy.json if it exists. If this configuration file does not exist, the default configuration `config/.default/canopy.default.json` will be used as a fallback for demonstration purposes.
 
 <Cards>
-  <Card title="Overview" href="/configuration" />
   <Card title="Search" href="/configuration/search" />
   <Card title="Locale" href="/configuration/locale" />
   <Card title="Map" href="/configuration/map" />
@@ -26,6 +25,14 @@ A custom Canopy configuration file can be created with the following steps:
 </Callout>
 
 ## Properties
+
+| Property     | Type            | Description                            |
+| ------------ | --------------- | -------------------------------------- |
+| `collection` | `string`        | IIIF Collection URI                    |
+| `label`      | `label `        | IIIF Presentation 3.0 label property   |
+| `summary`    | `summary`       | IIIF Presentation 3.0 summary property |
+| `featured`   | `Array<string>` | Array of IIIF Manifest URIs            |
+| `metadata`   | `Array<string>` | Array of `metadata` labels             |
 
 ### collection
 

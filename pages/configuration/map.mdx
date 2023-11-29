@@ -13,12 +13,12 @@ A map route can be enabled to provide geographic discovery of works via `config/
 
 ## Properties
 
-| Property        | Type    | Description                                                                                                                |
-| --------------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`       | Boolean | Boolean value to enable or disable the `/map` route. The default value is `false`.                                         |
-| `defaultBounds` | Array   | The `defaultBounds` property defines the coordinates of the initial view of the map.                                       |
-| `icon`          | Object  | The `icon` property defines the icon used to represent each marker on the map.                                             |
-| `tileLayers`    | Array   | The map's tile layers are also configured here, giving users the ability to choose and customize layers for their project. |
+| Property        | Type      | Description                                                                                                                |
+| --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `enabled`       | `boolean` | Boolean value to enable or disable the `/map` route. The default value is `false`.                                         |
+| `defaultBounds` | `Array`   | The `defaultBounds` property defines the coordinates of the initial view of the map.                                       |
+| `icon`          | `Object`  | The `icon` property defines the icon used to represent each marker on the map.                                             |
+| `tileLayers`    | `Array`   | The map's tile layers are also configured here, giving users the ability to choose and customize layers for their project. |
 
 ### enabled
 
@@ -93,7 +93,6 @@ Example of the `map` configuration in `config/options.json` file with a map enab
         "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
       }
     ]
-  },
-  ...
+  }
 }
 ```
