@@ -5,6 +5,15 @@ import { Box } from "@radix-ui/themes";
 
 Canopy allows for easy creation of contextual content to support and reference the automatically generated content in a IIIF Collection. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
 
+<Callout type="info">
+  See the **[Creating Markdown Content guide](/create-markdown-content)** for a
+  step-by-step guide illustrating basic creation of new content.
+</Callout>
+
+## Markdown and Components
+
+Content is edited in the `/content` directory at the root of your Canopy IIIF project using `.mdx` files. In addition to the standard Markdown elements, Canopy IIIF provides a number of custom components that can be used to enhance the content of your site. These components are designed to be used in conjunction with Markdown to create a variety of content.
+
 <Cards>
   <Card title="Markdown" href="/content/markdown" />
   <Card title="Card" href="/content/card" />
@@ -13,22 +22,13 @@ Canopy allows for easy creation of contextual content to support and reference t
   <Card title="Viewer" href="/content/viewer" />
 </Cards>
 
-## Creating Content
-
-Canopy IIIF is designed to work with Markdown using the [MDX](https://mdxjs.com/) library. This allows us to cleanly leverage custom Canopy components alongside our Markdown content. Markdown content can be edited in the `/content` directory at the root of your Canopy IIIF project.
-
-<Callout type="info">
-  See the **[Creating Markdown Content guide](/create-markdown-content)** for a
-  step-by-step guide illustrating basic creation of new content.
-</Callout>
-
 ## Example Content
 
 Content page with formatted Markdown elements, front matter, and an integrated `<Viewer />` component to output a IIIF Viewer for a provided Manifest.
 
 ### Sample MDX
 
-```mdx copy filename="/content/about/nez-perce.mdx"
+```mdx copy filename="content/about/nez-perce.mdx"
 ---
 title: The Nez Percé (Nimíipuu)
 navigation: "about"

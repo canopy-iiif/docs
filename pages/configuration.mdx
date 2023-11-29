@@ -4,25 +4,30 @@ import { Callout, Cards, Card } from "nextra/components";
 
 The Canopy IIIF build process will read from a custom configuration file at config/canopy.json if it exists. If this configuration file does not exist, the default configuration `config/.default/canopy.default.json` will be used as a fallback for demonstration purposes.
 
+<Callout type="info">
+  See the **[Create a Project guide](/get-started)** for a step-by-step guide
+  illustrating the setup of Canopy IIIF project.
+</Callout>
+
+## Configuration Options
+
+Canopy IIIF is a highly configurable application that can be tailored to the needs of a project. Most Canopy configurations fallback to default options if not customized.
+
 <Cards>
+  <Card title="Basic" href="/configuration#basic-configuration" />
   <Card title="Search" href="/configuration/search" />
   <Card title="Locale" href="/configuration/locale" />
   <Card title="Map" href="/configuration/map" />
   <Card title="Theme" href="/configuration/theme" />
 </Cards>
 
-## Customizing Configuration
+## Basic Configuration
 
 A custom Canopy configuration file can be created with the following steps:
 
 1. Find your `config/` directory
 2. Copy `canopy.sample.json` to `canopy.json`
 3. Make updates to both the **prod** and **dev** configurations
-
-<Callout type="info">
-  See the **[Create a Project guide](/get-started)** for a step-by-step guide
-  illustrating the setup of Canopy IIIF project.
-</Callout>
 
 ## Properties
 
