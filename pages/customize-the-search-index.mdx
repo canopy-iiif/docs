@@ -13,9 +13,20 @@ import { Box, Text, Section } from "@radix-ui/themes";
   </Text>
 </Section>
 
+<Callout>
+  This guide assumes you have a Canopy IIIF project. See the [Create a
+  Project](/get-started) guide to get started.
+</Callout>
+
 ## Use Case
 
-You are building a digital exhibit featuring Arabic manuscripts. For example, this NUL Collection of [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c). The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic and English text in its `label` and `summary` properties. You need to search the exhibit by both Arabic and English text values. You also need to support text from the Manifest's `summary` in search results.
+You'd like to use Canopy IIIF to create a digital exhibit featuring Arabic manuscripts. For example, this NUL Collection of [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c). The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic and English text in its `label` and `summary` properties.
+
+You'd like to customize search in the following three ways:
+
+- Support the "Arabic" character set in Search (in addition to default "Latin").
+- Include text from a Manifest's `summary` values in search results.
+- Include additional `Manifest` metadata in search results. In our example [Manifests](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Contributor" and "Alternate Title" as `metadata` items and would like to surface these in search results.
 
 ## Implementation
 
@@ -36,9 +47,11 @@ You are building a digital exhibit featuring Arabic manuscripts. For example, th
 }
 ```
 
+3. Restart your development server to see the changes.
+
 ### Include summary in search results
 
-In `/config/options.json` update the value of `search.index.summary.enabled` to be `true`.
+1. In `/config/options.json` update the value of `search.index.summary.enabled` to be `true`.
 
 ```json filename="config/options.json"
 
@@ -52,9 +65,40 @@ In `/config/options.json` update the value of `search.index.summary.enabled` to 
 }
 ```
 
-### Validate multi language search
+2. Restart your development server to see the changes.
 
-After updating `/config/options.json` restart the development server and now you'll be able to search by Arabic text.
+### Customize Manifest metadata in search results
+
+1. Open `/config/canopy.json`
+2. Update both `dev.metadata` and `prod.metadata` to include the metadata fields you'd like exposed in search results. (In the [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Contributor" and "Alternate Title" as `metadata` items.)
+
+```json filename="config/canopy.json"
+"dev": {
+    ...
+    "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
+    ...
+  },
+"prod": {
+    ...
+    "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
+    ...
+  },
+```
+
+3. Restart your development server to see the changes.
+
+<Callout type="info">
+  **Pro tip**: To visually confirm text being indexed for search, open the file
+  `.canopy/index.json` and verify your custom data is being indexed.
+</Callout>
+
+### Validate search customizations
+
+Verify your customizations are working by searching for:
+
+- An Arabic phrase (e.g. "مجموع الفوائد.")
+- A Manifest `summary` value (e.g. "Fāʼidah of Prophet Yūsuf on gaining people's love and respect.")
+- A Manifest `metadata` value (e.g. "Falke", or "Prophet Yūsuf")
 
 <Box m="9" my="6">
   ![canopy home page](/examples/guide-search-arabic.png)
