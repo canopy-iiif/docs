@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "canopy-iiif/docs",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Canopy IIIF Documentation",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/canopy-iiif/docs"
   },
   "author": "Shu Ding <g@shud.in>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
+    "url": "https://github.com/canopy-iiif/docs/issues"
   },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
+  "homepage": "https://canopy-iiif.github.io/docs/",
   "dependencies": {
     "@iiif/parser": "^1.1.2",
     "@iiif/presentation-3": "^2.1.3",
