@@ -1,22 +1,56 @@
-# Contextual Content
+import { Callout, Cards, Card, Tabs } from "nextra/components";
+import { Box } from "@radix-ui/themes";
 
-Canopy allows for easy creation of contextual content that supports the automatically generated content at `/`, `search/` and `works/`. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
+# Content
 
-### Authoring new Content
+Canopy allows for easy creation of contextual content to support and reference the automatically generated content in a IIIF Collection. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
+
+<Cards>
+  <Card title="Overview" href="/content" />
+  <Card title="Markdown" href="/content/markdown" />
+  <Card title="Card" href="/content/card" />
+  <Card title="Slider" href="/content/slider" />
+  <Card title="Viewer" href="/content/viewer" />
+</Cards>
+
+## Creating Content
 
 Canopy IIIF is designed to work with Markdown using the [MDX](https://mdxjs.com/) library. This allows us to cleanly leverage custom Canopy components alongside our Markdown content. Markdown content can be edited in the `/content` directory at the root of your Canopy IIIF project.
 
-See the [Markdown Example](https://canopy-iiif.github.io/canopy-iiif/about/example) page for additional information.
+<Callout type="info">
+  See the **[Creating Markdown Content guide](/create-markdown-content)** for a
+  step-by-step guide illustrating basic creation of new content.
+</Callout>
 
-```mdx copy filename="/content/about/new-page.mdx"
+## Example Content
+
+Content page with formatted Markdown elements, front matter, and an integrated `<Viewer />` component to output a IIIF Viewer for a provided Manifest.
+
+### Sample MDX
+
+```mdx copy filename="/content/about/nez-perce.mdx"
 ---
-title: New Page Title
+title: The Nez Percé (Nimíipuu)
 navigation: "about"
 ---
 
-# New Page Title
+# The Nez Percé (Nimíipuu)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget odio vitae diam aliquam sodales. Sed vitae eros vitae urna aliquam aliquet. Donec euismod, nisl vitae aliquam ultricies, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec vitae nisl vitae nisl aliquam aliquet. Donec euismod, nisl vitae aliquam ultricies, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.
+This a sample page for scholarly content with historical context relating to the [Nez Percé](https://en.wikipedia.org/wiki/Nez_Perce), also known as the Nimíipuu.
 
-## Content continues...
+## A IIIF Viewer
+
+The `<Viewer />` is a React component that takes a single property, `iiifContent`, which is the URI to the
+IIIF manifest. The component will then fetch the Manifest and render a deep-zoom viewer. The viewer is
+responsive and will resize to fit the container it is placed in. These Manifests can be part of the Canopy
+source Collection but are not limited to it.
+
+<Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif" />
 ```
+
+### Sample Output
+
+<Box m="4">
+  ![canopy content page iiif
+  viewer](/examples/creating-markdown-content-referenced-item-0.png)
+</Box>
