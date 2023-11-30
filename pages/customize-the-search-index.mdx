@@ -1,0 +1,199 @@
+import { Callout, Steps } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# Customize the Search Index
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Under the hood Canopy uses
+    [FlexSearch](https://github.com/nextapps-de/flexsearch) to power the search
+    index. FlexSearch is a full-text, memory efficient, search library that is
+    fast and easy to use. It is also highly customizable. Canopy provides a
+    number of ways to customize the search index.
+  </Text>
+</Section>
+
+<Callout>
+  This guide assumes you have a Canopy IIIF project. See the [Create a
+  Project](/get-started) guide to get started.
+</Callout>
+
+## Use Case
+
+You'd like to use Canopy IIIF to create a digital exhibit featuring Arabic manuscripts. For example, this NUL Collection of [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c). The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic and English text in its `label` and `summary` properties.
+
+You'd like to [customize search configuration](/configuration/search) in the following three ways:
+
+- Support the "Arabic" character set in Search (in addition to default "Latin").
+- Include text from a Manifest's `summary` values in search results.
+- Include additional `Manifest` metadata in search results. In our example [Manifests](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Contributor" and "Alternate Title" as `metadata` items and would like to surface these in search results.
+
+## Implementation
+
+<Steps>
+
+### Support additional language encoding(s)
+
+1. Open `/config/options.json` and add support for Arabic text.
+2. Add `"arabic:extra"` to the `search.flexSearch.charset` property.
+
+```json filename="config/options.json" {7}
+{
+  ...
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": ["latin:extra", "arabic:extra"],
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": true
+      }
+    }
+  },
+  ...
+}
+```
+
+3. Restart your development server to see the changes.
+
+### Include summary in search results
+
+<Callout type="info">
+  Canopy IIIF's [default search configuration](/configuration/search), indexes
+  only a Work Manifest's `label` and `metadata` values.
+</Callout>
+
+To include a Manifest's `summary` value in search results, you'll need to update the `search.index.summary.enabled` property.
+
+1. In `/config/options.json` set the value of `search.index.summary.enabled` to be `true`.
+
+```json filename="config/options.json" {36}
+{
+  ...
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": ["latin:extra", "arabic:extra"],
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": true
+      }
+    }
+  },
+  ...
+}
+```
+
+2. Restart your development server to see the changes.
+
+### Include custom metadata in search results
+
+In `/config.canopy.json`, you can index all, part, or none of a Work Manifest's `metadata` values.
+
+<Callout type="info">
+  By default, Canopy IIIF indexes all metadata fields.
+</Callout>
+
+In this example, we only want to target specific metadata fields, "Date", "Subject",
+"Contributor", and "Alternate Title".
+
+1. Open `/config/canopy.json`
+2. Depending on which environment you'd like to target (`dev` or `prod`) provide an array of metadata fields you'd like exposed in search results. (In the [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Date", "Subject", "Contributor" and "Alternate Title" as `metadata` items)
+
+In this example, we'll update the `dev` configuration:
+
+```json filename="config/canopy.json" {10}
+{
+  "dev": {
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif"
+    ],
+    "label": {
+      "none": ["Western Africa Manuscripts"]
+    },
+    "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    }
+  },
+  "prod": {...}
+}
+```
+
+3. Restart your development server to see the changes.
+
+<Callout type="info">
+  **Pro tip**: To visually confirm text being indexed for search, open the file
+  `.canopy/index.json` and verify your custom data is being indexed.
+</Callout>
+
+### Validate search customizations
+
+Verify your customizations are working by searching for:
+
+- An Arabic phrase (e.g. "مجموع الفوائد.")
+- A Manifest `summary` value (e.g. "Fāʼidah of Prophet Yūsuf on gaining people's love and respect.")
+- A Manifest `metadata` value (e.g. "Falke", or "Prophet Yūsuf")
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-search-arabic.png)
+</Box>
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-search-english.png)
+</Box>
+</Steps>
