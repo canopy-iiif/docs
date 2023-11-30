@@ -1,9 +1,45 @@
-### Theme
+import Tooltip from "@components/Shared/Tooltip";
+
+export const defaultThemeTooltipContent = '"light" | "dark" | "system"';
+
+# Theme
 
 The default theme for users can be set via `config/options.json`. This feature sets the initial theme for users as **light**, **dark**, or **system**. The _Toggle Theme_ button can also be enabled or disabled here.
 
 **Note:** Theme settings are stored in the users local browser storage. Setting the theme will only affect new users to your site. It will not change the default theme for users who have already visited.
 
+## Properties
+
+| Property        | Type                                                           | Description                                                  |
+| --------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
+| `defaultTheme`  | <Tooltip content={defaultThemeTooltipContent}>`enum`</Tooltip> | Sets the default theme for users.                            |
+| `toggleEnabled` | `boolean`                                                      | Enables or disables the _Toggle Theme_ button in the footer. |
+
+### defaultTheme
+
+Sets the default theme for users. The default value is **light**.
+
 ```json
-"theme": { "defaultTheme": "light", "toggleEnabled": false }
+"defaultTheme": "light" // "light" | "dark" | "system"
+```
+
+### toggleEnabled
+
+Boolean value that enables or disables the _Toggle Theme_ button in the footer. The default value is **true**.
+
+```json
+"toggleEnabled": true
+```
+
+## Example Theme Configuration
+
+Example of the `theme` configuration in `config/options.json` file with a `defaultTheme` of **light** and the `toggleEnabled` set to **false**.
+
+```json copy filename="config/options.json"
+{
+  "theme": {
+    "defaultTheme": "light",
+    "toggleEnabled": false
+  }
+}
 ```
