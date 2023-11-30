@@ -59,7 +59,7 @@ Users can customize their [FlexSearch configuration](https://github.com/nextapps
 
 ### index
 
-Option available for implementers to define what values of Manifest are indexed. Canopy IIIF indexes the `label` property on the Manifest by default. Users can also index the `metadata` and `summary` properties.
+Implementers can define the properties of their manifests that are indexed. Canopy IIIF indexes the `label` property on the Manifest by default. Users can also index the `metadata` and `summary` properties.
 
 The `metadata` property is indexed by default for [configured metadata labels](/docs/configuration#metadata). Furthermore, all `metadata` values may be indexed OR you may specify only the properties that are specified in `config/canopy.json` by modifying `search.index.metadata.all`.
 
