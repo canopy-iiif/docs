@@ -1,0 +1,150 @@
+import { Callout, FileTree } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# Navigation
+
+<Section size="1">
+<Text size="4" mt="9">
+     Navigation is configured from `_meta.json` files located in `/content`.
+  </Text>
+
+</Section>
+
+## Primary Navigation
+
+Canopy IIIF creates it's primary navigation at build time from `/content/_meta_.json`. Each link will have a `path` and `text` key. A `path` value will resolve to a file or directory under `/content` or `/src/pages`. The `text` key will be what's displayed in the navigation bar. The order of the links in the array will be the order they appear in the navigation.
+
+```json filename="/content/_meta_.json"
+[
+  {
+    "path": "/works",
+    "text": "Works"
+  },
+  {
+    "path": "/metadata",
+    "text": "Metadata"
+  },
+  {
+    "path": "/about",
+    "text": "About"
+  }
+]
+```
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/content-navigation-primary.png)
+</Box>
+
+<Callout type="info">
+  Canopy IIIF provides the **Works** and **Metadata** pages out of the box,
+  pre-configured. Therefore you will not see markdown files for these pages
+  under the `/content` directory, though their links will resolve.
+</Callout>
+
+For a more detailed explanation of how the `path` value is resolved, see below.
+
+<Callout>
+  **Technical explanation**: The `path` value follows the
+  [Next.js](https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts)
+  `pages` routing convention. The `path` value `/works` will map to
+  `/src/pages/works/index.tsx`. The `path` value`/metadata` will map to
+  `/src/pages/metadata.tsx`.
+</Callout>
+
+### Custom Content
+
+Most users will want to add navigation for custom content to their site. For example, a user may want to customize the navigation on the **About** page to better fit the content of their site or create a brand new page with custom navigation. This is done by creating a markdown file under `/content` and adding a link to the primary navigation (as seen above).
+
+<FileTree>
+  <FileTree.Folder name="content" defaultOpen>
+    <FileTree.Folder name="about" defaultOpen>
+      <FileTree.File name="_meta.json" />
+      <FileTree.File name="index.mdx" />
+      <FileTree.File name="example.mdx" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+For example, to add a page called **Essays** to the primary navigation, create a markdown file called `index.mdx` under `/content/essays`.
+
+<FileTree>
+  <FileTree.Folder name="content" defaultOpen>
+    <FileTree.Folder name="about" defaultOpen>
+      <FileTree.File name="_meta.json" />
+      <FileTree.File name="index.mdx" />
+      <FileTree.File name="example.mdx" />
+    </FileTree.Folder>
+    <FileTree.Folder name="essays" defaultOpen>
+      <FileTree.File name="_meta.json" />
+      <FileTree.File name="index.mdx" />
+      <FileTree.File name="page1.mdx" />
+      <FileTree.File name="page2.mdx" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info">
+  If creating a new page, try copying the content from `src/pages/about` into
+  `src/pages/{your_page_name}`. This will give you a good starting point for
+  your new page.
+</Callout>
+
+## Secondary Navigation
+
+### Top Level
+
+Secondary navigation may be defined from within a `_meta.json` file located within a subdirectory of `/content`. For example, secondary navigation within **About** might look like this:
+
+```json filename="/content/about/_meta_.json"
+[
+  {
+    "path": "/about",
+    "text": "About"
+  },
+  {
+    "path": "/about/example",
+    "text": "Markdown Example"
+  }
+]
+```
+
+Which will render _top-level_ secondary navigation links **About** and **Markdown Example**:
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/content-navigation-secondary.png)
+</Box>
+
+These **About** secondary navigation links are wired up to route to the corresponding markdown file. For example, clicking on **Markdown Example** will route to `/content/about/example`.
+
+**Markdown Example** must also define a `navigation` frontmatter property, identifying it's parent. This is used to render the _top-level_ secondary navigation links. For example, the **Markdown Example** markdown file might look like this:
+
+```markdown filename="/content/about/example.mdx" {3}
+---
+title: About
+navigation: "about"
+---
+
+Content goes here
+```
+
+### Internal Page Navigation
+
+Internal page navigation links (ie. "Use Cases", "Features", and "Colophon") are automatically generated for _heading level 2_ elements (`## Heading`) in your Markdown content. For example, the About page might look like this:
+
+```markdown filename="/content/about/index.mdx"
+# About
+
+Using a single [IIIF Presentation Collection](https://iiif.io/api/presentation/3.0/#overview-collection) as a data source, Canopy IIIF (Canopy) generates a browseable, searchable, customizable, and contextually-driven static site using Next.js without duplicating content.
+
+## Use Cases
+
+Some content here
+
+## Features
+
+Some content here
+
+## Colophon
+
+Some content here
+```
