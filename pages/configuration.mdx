@@ -41,7 +41,7 @@ A custom Canopy configuration file can be created with the following steps:
 
 ### collection
 
-The `collection` property is required and must be the id of the referenced source IIIF Collection. Collections of Collections are not currently supported.
+The `collection` property is required and must be the id of the referenced source IIIF Collection manifest. Collections referencing other Collections in their `items` property are not currently supported.
 
 ```json
 "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse"
