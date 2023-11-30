@@ -1,3 +1,7 @@
+import Tooltip from "@components/Shared/Tooltip";
+
+export const defaultThemeTooltipContent = '"light" | "dark" | "system"';
+
 # Theme
 
 The default theme for users can be set via `config/options.json`. This feature sets the initial theme for users as **light**, **dark**, or **system**. The _Toggle Theme_ button can also be enabled or disabled here.
@@ -6,17 +10,17 @@ The default theme for users can be set via `config/options.json`. This feature s
 
 ## Properties
 
-| Property        | Type                      | Description                                                  |
-| --------------- | ------------------------- | ------------------------------------------------------------ |
-| `defaultTheme`  | `light`, `dark`, `system` | Sets the default theme for users.                            |
-| `toggleEnabled` | `boolean`                 | Enables or disables the _Toggle Theme_ button in the footer. |
+| Property        | Type                                                           | Description                                                  |
+| --------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
+| `defaultTheme`  | <Tooltip content={defaultThemeTooltipContent}>`enum`</Tooltip> | Sets the default theme for users.                            |
+| `toggleEnabled` | `boolean`                                                      | Enables or disables the _Toggle Theme_ button in the footer. |
 
 ### defaultTheme
 
 Sets the default theme for users. The default value is **light**.
 
 ```json
-"defaultTheme": "light" // light, dark, system
+"defaultTheme": "light" // "light" | "dark" | "system"
 ```
 
 ### toggleEnabled
