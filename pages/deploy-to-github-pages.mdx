@@ -59,7 +59,18 @@ Once the action has run, the action indicator should change from a _red X_ to a 
 
 Once the **gh-pages** branch exists and the action indicator is a _green check mark_, again press the Settings button.
 Under _Code and automation_, click **Pages** and select **gh-pages** from the **Branch** dropdown under _Build and deployment_
-and click \*_Save_. Now your Canopy site will be active at the URL you defined in the `NEXT_PUBLIC_URL` setting.
+and click \*_Save_.
+
 ![Set gh-pages in Settings](/examples/set-gh-pages.png)
+
+### Validate the URL
+
+Now your Canopy site will be active at a URL derived from values you defined in the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH` settings.
+
+i.e. `https://[NEXT_PUBLIC_URL]/[NEXT_PUBLIC_BASE_PATH]`
+
+You can also view your live domain in Github by clicking the top **Settings** button, and then under _Code and automation_ -> **Pages**.
+
+![View live gh-pages domain in Settings](/examples/guide-deploy-view-domain.png)
 
 </Steps>
