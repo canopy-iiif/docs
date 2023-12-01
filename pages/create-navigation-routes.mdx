@@ -1,0 +1,91 @@
+import { Callout, Steps, FileTree } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# Create Navigation Routes
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Implementers of Canopy IIIF may want to create routes in their `content/`
+    directory to fit their contextual content. This guide will walk you through
+    the process of creating a new directory and adding its pages to navigation
+    menus.
+  </Text>
+</Section>
+
+<Callout>
+  This guide assumes you have a Canopy IIIF project. See the [Create a
+  Project](/get-started) guide to get started.
+</Callout>
+
+## Use Case
+
+As a digital scholarship librarian, you have compiled a series of essays analyzing manuscripts in a IIIF Collection provided by your institution and want to create the new directory `essays` to deliver this scholarly content.
+
+## Implementation
+
+<Steps>
+
+### Create a New Content Route
+
+- **Create** a new directory in the `content/` called `essays`.
+- **Add** a new file `index.mdx` within it. This will act as the landing page for the new directory and be delivered at the route `/essays/`.
+- **Add** a new file `the-three-pillars-of-islam.mdx` within it. This will be a page within the new directory at the route `/essays/the-three-pillars-of-islam/`.
+
+<FileTree>
+  <FileTree.Folder name="content" defaultOpen>
+    <FileTree.Folder name="about">
+      <FileTree.File name="_meta.json" />
+      <FileTree.File name="index.mdx" />
+      <FileTree.File name="example.mdx" />
+    </FileTree.Folder>
+    <FileTree.Folder name="essays" defaultOpen>
+      <FileTree.File name="index.mdx" />
+      <FileTree.File name="three-pillars-of-islam.mdx" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+The content in this directory is NOT yet accessible. We also need to add the route in `/src/pages/essays` to make it accessible.
+
+### Reflect the Route in `src/pages/`
+
+- **Copy** the `/src/pages/about` directory recursively and rename it to `/src/pages/essays`. The `essays` directory will now contain the files `index.tsx` and `[slug].tsx`.
+
+```sh copy
+cp -r src/pages/about src/pages/essays
+```
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="pages" defaultOpen>
+      <FileTree.Folder name="about">
+        <FileTree.File name="[slug].tsx" />
+        <FileTree.File name="index.tsx" />
+      </FileTree.Folder>
+      <FileTree.Folder name="essays" defaultOpen>
+        <FileTree.File name="[slug].tsx" />
+        <FileTree.File name="index.tsx" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+### Reference the Content Directory
+
+- **Open** `/src/pages/essays/index.tsx` and **change** the `contentDir` variable to `essays`.
+- **Save** the file.
+
+```diff filename="/src/pages/essays/index.tsx"
+- const CONTENT_DIRECTORY = "about";
++ const CONTENT_DIRECTORY = "essays";
+```
+
+- **Open** `/src/pages/essays/[slug].tsx` and **change** the `contentDir` variable to `essays`.
+- **Save** the file.
+
+```diff filename="/src/pages/essays/[slug].tsx"
+- const CONTENT_DIRECTORY = "about";
++ const CONTENT_DIRECTORY = "essays";
+```
+
+</Steps>
