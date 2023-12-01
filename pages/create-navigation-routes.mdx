@@ -45,15 +45,17 @@ As a digital scholarship librarian, you have compiled a series of essays analyzi
   </FileTree.Folder>
 </FileTree>
 
-The content in this directory is NOT yet accessible. We also need to add the route in `/src/pages/essays` to make it accessible.
+The content in this directory is **NOT** viewable in a browser. We also need to add the route in `/src/pages/essays` to make it accessible.
 
 ### Reflect the Route in `src/pages/`
 
-- **Copy** the `/src/pages/about` directory recursively and rename it to `/src/pages/essays`. The `essays` directory will now contain the files `index.tsx` and `[slug].tsx`.
+- **Copy** the `src/pages/about` directory recursively and rename it to `src/pages/essays`. The `essays` directory will now contain the files `index.tsx` and `[slug].tsx`.
 
 ```sh copy
 cp -r src/pages/about src/pages/essays
 ```
+
+The `src/pages/essays` directory will now contain the files `index.tsx` and `[slug].tsx`.
 
 <FileTree>
   <FileTree.Folder name="src" defaultOpen>
