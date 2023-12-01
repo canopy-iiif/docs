@@ -1,0 +1,60 @@
+import { Callout, FileTree, Steps } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# Customize Navigation
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Navigation in Canopy is customizable. You can add, remove, and reorder
+    navigation links in your project.
+  </Text>
+</Section>
+
+<Callout>
+  This guide assumes you have a Canopy IIIF project. See the [Create a
+  Project](/get-started) guide to get started.
+</Callout>
+
+## Use Case
+
+- Let's say we want to rename the **About** page to **History**, and provide some additional information about the history of our organization.
+- Create a new page called "Contact" and add it to the site navigation.
+
+## Implementation
+
+<Steps>
+
+### Update the navigation configuration
+
+<FileTree>
+  <FileTree.Folder name="content" defaultOpen>
+    <FileTree.File name="_meta.json" />
+  </FileTree.Folder>
+</FileTree>
+
+### Rename existing directories
+
+Locate directory names for the **About** page. We'll rename these from `about` to `history` in the following locations:
+
+<FileTree>
+  <FileTree.Folder name="content" defaultOpen>
+    <FileTree.Folder name="about" defaultOpen></FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="pages" defaultOpen>
+      <FileTree.Folder name="about" defaultOpen>
+
+      </FileTree.Folder>
+    </FileTree.Folder>
+
+  </FileTree.Folder>
+</FileTree>
+
+### Update the React components
+
+### Create a new Contact page
+
+</Steps>
