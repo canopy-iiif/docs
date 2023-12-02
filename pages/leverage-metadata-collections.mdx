@@ -2,12 +2,14 @@ import { Steps } from "nextra/components";
 import { Callout } from "nextra/components";
 import { Box, Text, Section } from "@radix-ui/themes";
 
-# Enable a Map with navPlace Properties
+# Leverage Metadata Collections
 
 <Section size="1">
   <Text size="4">
-    Canopy generates new IIIF collections based on each unique metadata key value pair and allows users to reuse
-    these collections for their own custom content.
+    Canopy generates new IIIF Collections based on the metadata labels included in your `config/canopy.json` file.
+    For each unique string value associated with the label across the IIIF manifests found in your project, a new
+    IIIF Collection is created. These Collections are used to create facets across your site and are also available
+    for reuse in custom content.
   </Text>
 </Section>
 
@@ -19,10 +21,55 @@ import { Box, Text, Section } from "@radix-ui/themes";
 ## Use Case
 
 You are a researcher creating a digital scholarship site and would like to create a custom content page
-with a Slider component that displays all the works in your collection that have a subject of "Graffiti".
+with a Slider component that displays all the works in your collection that have a "Subject" of "Graffiti".
 
 ## Implementation
 
 <Steps>
-  ### Add Subject to the **metadata** Property of your Config
+### Add Metadata Labels to the **metadata** Property of your Config
+
+In order for Canopy to generate a Collection for a given metadata label, you must add the label to the
+`metadata` property in your `config/canopy.json` file. The `metadata` property is an array of metadata labels that
+match string values in your Manifest URI metadata entries.
+
+Since you need a Collection for the "Subject" label with value of "Graffiti", you need to add the label to your
+`metadata` array if it's not already there.
+
+```json filename="config/canopy.json" {12,24}
+{
+    "prod": {
+      "label": { "none": ["Collection Title"] },
+      "summary": {
+        "none": ["Brief description of the site and its contents."]
+      },
+      "collection": "https://example.org/iiif/collection.json",
+      "featured": [
+        "https://example.org/manifest-1.json",
+        "https://example.org/manifest-2.json"
+      ],
+      "metadata": ["Subject"]
+    },
+    "dev": {
+      "label": { "none": ["Collection Title"] },
+      "summary": {
+        "none": ["Brief description of the site and its contents."]
+      },
+      "collection": "https://example.org/iiif/collection.json",
+      "featured": [
+        "https://example.org/manifest-1.json",
+        "https://example.org/manifest-2.json"
+      ],
+      "metadata": ["Subject"]
+    }
+}
+```
+
+### Check that the Collection was Generated
+
+IIIF Collections are generated when your site is rebuilt or when your server is restarted. After you've added the
+metadata label to your `config/canopy.json` file, you will need to ensure this happens.  If you are working directly in
+GitHub with GitHub Pages, you can commit the change and wait for the site to rebuild. If you are working locally, you
+will need to run `npm run dev` to restart your local server.
+
+
 </Steps>
