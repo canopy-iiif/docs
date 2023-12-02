@@ -8,7 +8,7 @@ const Splash = ({ children }) => {
 
   return (
     <Section size="3">
-      <Box style={{ position: "relative" }} px="6">
+      <Box style={{ position: "relative" }}>
         <Box>{children}</Box>
         <Window iiifContent={iiifContent} />
       </Box>
