@@ -2,14 +2,14 @@ import { Callout, Cards, Card } from "nextra/components";
 
 # Configuration
 
-The Canopy IIIF build process will read from a custom configuration file at config/canopy.json if it exists. If this configuration file does not exist, the default configuration `config/.default/canopy.default.json` will be used as a fallback for demonstration purposes.
+The Canopy IIIF build process is configured at `config/canopy.json` if it exists. If this configuration file has not been created, the default configuration `config/.default/canopy.default.json` will be used as a fallback for demonstration purposes.
 
 <Callout type="info">
   See the **[Create a Project guide](/get-started)** for a step-by-step guide
   illustrating the setup of Canopy IIIF project.
 </Callout>
 
-## Configuration Options
+## Configuration options
 
 Canopy IIIF is a highly configurable application that can be tailored to the needs of a project. Canopy configurations fallback to default options if not customized.
 
@@ -21,51 +21,60 @@ Canopy IIIF is a highly configurable application that can be tailored to the nee
   <Card title="Theme" href="/configuration/theme" />
 </Cards>
 
-## Basic Configuration
-
-A custom Canopy configuration file can be created with the following steps:
-
-1. Find your `config/` directory
-2. Copy `canopy.sample.json` to `canopy.json`
-3. Make updates to both the **prod** and **dev** configurations
-
 ## Properties
 
-| Property     | Type            | Description                            |
-| ------------ | --------------- | -------------------------------------- |
-| `collection` | `string`        | IIIF Collection URI                    |
-| `label`      | `label `        | IIIF Presentation 3.0 label property   |
-| `summary`    | `summary`       | IIIF Presentation 3.0 summary property |
-| `featured`   | `Array<string>` | Array of IIIF Manifest URIs            |
-| `metadata`   | `Array<string>` | Array of `metadata` labels             |
+A custom Canopy configuration is created at `config/canopy.json`. The file must be a valid JSON and must contain a `collection` property with a valid IIIF Collection URI.
+
+| Property        | Type            | Description                            |
+| --------------- | --------------- | -------------------------------------- |
+| `collection`    | `string`        | IIIF Collection URI                    |
+| `devCollection` | `string`        | IIIF Collection URI                    |
+| `label`         | `label `        | IIIF Presentation 3.0 label property   |
+| `summary`       | `summary`       | IIIF Presentation 3.0 summary property |
+| `featured`      | `Array<string>` | Array of IIIF Manifest URIs            |
+| `metadata`      | `Array<string>` | Array of `metadata` labels             |
 
 ### collection
 
-The `collection` property is required and must be the id of the referenced source IIIF Collection manifest. Collections referencing other Collections in their `items` property are not currently supported.
+The `collection` property is **required** and must be the URI of the referenced source IIIF Collection and must match the `id` of this resource. Collections referencing other Collections in their `items` property are not currently supported.
 
 ```json
-"collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse"
+"collection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=500"
+```
+
+### devCollection
+
+The `devCollection` property is an optional property used only when running the development server using `npm run dev`. Like `collection`, it must be the URI of the referenced source IIIF Collection and must match the `id` of this resource. The `devCollection` property is useful when working with a large IIIF Collection and you want to target a smaller subset of the collection for development purposes.
+
+```json
+"devCollection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=25"
 ```
 
 ### label _and_ summary
 
-The Canopy IIIF site **title** and **description** are respectively the `label` and `summary` IIIF Presentation API properties of the set IIIF Collection resource. You can optionally override this by providing a valid Presentation 3.0 [label](https://iiif.io/api/presentation/3.0/#label) and/or [summary](https://iiif.io/api/presentation/3.0/#summary) property. These values are transformed to meta elements in the `<head>` of the HTML document.
+The Canopy IIIF site **title** and **description** respectively default to the `label` and `summary` (if set) IIIF Presentation API properties of the source IIIF Collection resource. You can optionally override these values by providing valid Presentation 3.0 [label](https://iiif.io/api/presentation/3.0/#label) and [summary](https://iiif.io/api/presentation/3.0/#summary) properties. These values are transformed to meta elements in the `<head>` of the HTML document.
 
 ```json
-"label": { "none": ["Hobhouse"] },
-"summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] }
+"label": {
+  "none": ["Maps of Africa, 1561-1908"]
+},
+"summary": {
+  "none": [
+    "113 antique maps of Africa and accompanying text dating from the mid-16th Century to the early 20th Century."
+  ]
+}
 ```
 
 ### featured
 
-You can inform Canopy IIIF of featured Manifests by providing an array of ids. These must be within the referenced collection resource and the Manifest URIs must be an exact match. These Manifests will render throughout the interface in featured components.
+You can inform Canopy IIIF of featured Manifests by providing an array of Manifest URIs matching the `id` value of resources in your source IIIF Collection. These must be referenced within the source IIIF Collection resource and the Manifest URIs must be an exact string match. These Manifests will render throughout the interface in featured components.
 
-**Warning:** In the current pre-release, featured Manifests must have an Image body on the first Canvas.
+**Warning:** In the current release, featured Manifests must have an Image body on the first Canvas.
 
 ```json
 "featured": [
-  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+  "https://api.dc.library.northwestern.edu/api/v2/works/24395a20-5054-4ad1-8dd8-04a230f4740b?as=iiif",
+  "https://api.dc.library.northwestern.edu/api/v2/works/0792fb69-efc3-4793-90e0-97362c67ac0e?as=iiif"
 ]
 ```
 
@@ -76,38 +85,43 @@ Curating Metadata allows implementers of Canopy IIIF to select metadata fields t
 **Note:** Metadata labels are not yet BCP 47 language code aware; however, aggregation processes will make exact string comparisons regardless of language code.
 
 ```json
-"metadata": ["Extent", "Title", "Date Statement", "Language"]
+"metadata": ["Subject", "Date", "Language", "Creator", "Publisher"]
 ```
 
-## Production and Development
+## Example configuration
 
-Both the `prod` and `dev` environments have a configuration. These configurations can match each other; however in some cases, development speed can be aided by targeting a smaller IIIF Collection id as a fixture.
+The following is an example configuration for the [16th-Early 20th Century Maps of Africa](https://dc.library.northwestern.edu/search?collection=16th-Early%2020th%20Century%20Maps%20of%20Africa) provided by Northwestern University Libraries.
 
-## Example Configuration
-
-The following is an example configuration for the [Bodleian Libraries' Emily Hobhouse collection](https://archives.bodleian.ox.ac.uk/repositories/2/resources/2830). Two Manifests are featured and four metadata labels are curated.
+- A `devCollection` value is provided to target a smaller subset of 15 items for development purposes.
+- Two Manifests are `featured` and five `metadata` labels are curated.
+- The `label` and `summary` properties are overridden to provide custom values for the site title and description.
 
 ```json copy filename="config/canopy.json"
 {
-  "prod": {
-    "label": { "none": ["Hobhouse"] },
-    "summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] },
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
-    ],
-    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=500",
+  "devCollection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=25",
+  "featured": [
+    "https://api.dc.library.northwestern.edu/api/v2/works/24395a20-5054-4ad1-8dd8-04a230f4740b?as=iiif",
+    "https://api.dc.library.northwestern.edu/api/v2/works/0792fb69-efc3-4793-90e0-97362c67ac0e?as=iiif"
+  ],
+  "metadata": ["Subject", "Date", "Language", "Creator", "Publisher"],
+  "label": {
+    "none": ["Maps of Africa, 1561-1908"]
   },
-  "dev": {
-    "label": { "none": ["Hobhouse"] },
-    "summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] },
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
-    ],
-    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  "summary": {
+    "none": [
+      "113 antique maps of Africa and accompanying text dating from the mid-16th Century to the early 20th Century."
+    ]
   }
+}
+```
+
+## Minimal configuration
+
+The following is a minimal configuration for Canopy IIIF. This is a valid configuration intended for experimentatal and demonstration purposes, however, it is not recommended for production use.
+
+```json copy filename="config/canopy.json"
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=500"
 }
 ```
