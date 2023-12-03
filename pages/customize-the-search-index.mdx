@@ -20,26 +20,72 @@ import { Box, Text, Section } from "@radix-ui/themes";
 
 ## Use Case
 
-You'd like to use Canopy IIIF to create a digital exhibit featuring Arabic manuscripts. For example, this NUL Collection of [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c). The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic and English text in its `label` and `summary` properties.
+You'd like to use Canopy IIIF to create a digital exhibit featuring Arabic manuscripts. For example, the [Arabic Manuscripts from West Africa](https://dc.library.northwestern.edu/collections/59ec43f9-a96c-4314-9b44-9923790b371c) provided by Northwestern University. The [IIIF Manifest data](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif) contains both Arabic script and English text in its `label` and `summary` properties.
 
 You'd like to [customize search configuration](/configuration/search) in the following three ways:
 
 - Support the "Arabic" character set in Search (in addition to default "Latin").
-- Include text from a Manifest's `summary` values in search results.
+- Include text from Manifest `summary` values in search results.
 - Include additional `Manifest` metadata in search results. In our example [Manifests](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Contributor" and "Alternate Title" as `metadata` items and would like to surface these in search results.
 
 ## Implementation
 
 <Steps>
 
-### Support additional language encoding(s)
+### Add search configuration
 
-1. Open `/config/options.json` and add support for Arabic text.
-2. Add `"arabic:extra"` to the `search.flexSearch.charset` property.
+Setup a Canopy IIIF project with the following configuration, including the `search` property with default values.
 
-```json filename="config/options.json" {7}
+```json filename="config/options.json" {3-39} copy
 {
-  ...
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=100",
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": "latin:extra",
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": false
+      }
+    }
+  }
+}
+```
+
+### Support additional language charsets
+
+Edit `config/canopy.json` and add the additional language encoding, `arabic:extra`, to the `search.flexSearch.charset` property. The entries should be an array of strings as we are using multiple language encodings.
+
+```json filename="config/canopy.json" {7} copy
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=100",
   "search": {
     "enabled": true,
     "flexSearch": {
@@ -73,30 +119,25 @@ You'd like to [customize search configuration](/configuration/search) in the fol
         "enabled": true
       },
       "summary": {
-        "enabled": true
+        "enabled": false
       }
     }
-  },
-  ...
+  }
 }
 ```
-
-3. Restart your development server to see the changes.
 
 ### Include summary in search results
 
 <Callout type="info">
-  Canopy IIIF's [default search configuration](/configuration/search), indexes
-  only a Work Manifest's `label` and `metadata` values.
+  The [default search configuration](/configuration/search) indexes only
+  Manifest `label` and `metadata` values.
 </Callout>
 
-To include a Manifest's `summary` value in search results, you'll need to update the `search.index.summary.enabled` property.
+To include Manifest `summary` values in the search index, update the `search.index.summary.enabled` to `true`.
 
-1. In `/config/options.json` set the value of `search.index.summary.enabled` to be `true`.
-
-```json filename="config/options.json" {36}
+```json filename="config/canopy.json" {36} copy
 {
-  ...
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=100",
   "search": {
     "enabled": true,
     "flexSearch": {
@@ -133,53 +174,106 @@ To include a Manifest's `summary` value in search results, you'll need to update
         "enabled": true
       }
     }
+  }
+}
+```
+
+### Curate metadata labels for indexing
+
+Implementers may choose to index all, part, or none of the `metadata` in Manifests. By default, Canopy IIIF indexes only values defined in the `metadata` property of `config/canopy.json` file.
+
+Our source IIIF Collection has Manifest with specific `metadata` content to index, and we want to limit this to **Date**, **Subject**, **Contributor**, and **Alternate Title** labels. In this [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif), the respective values of _"Translated title: Love fāʼidah with the amulet of Prophet Yūsuf"_ and _"Falke, ʻUmar, 1893-1962 (Collector)"_ would be included in the index.
+
+```json filename="https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif" {14, 19, 26, 31}
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif",
+  "type": "Manifest",
+  "label": {
+    "none": [
+      "محبة مع خاتم النبي يوسف."
+    ]
   },
+  "metadata": [
+    {
+      "label": {
+        "none": [
+          "Alternate Title"
+        ]
+      },
+      "value": {
+        "none": [
+          "Translated title: Love fāʼidah with the amulet of Prophet Yūsuf"
+        ]
+      }
+    },
+    {
+      "label": {
+        "none": [
+          "Contributor"
+        ]
+      },
+      "value": {
+        "none": [
+          "Falke, ʻUmar, 1893-1962 (Collector)"
+        ]
+      }
+    },
+    ...
+  ],
   ...
 }
 ```
 
-2. Restart your development server to see the changes.
+Update the `config/canopy.json` file to include these labels in the `metadata` property.
 
-### Include custom metadata in search results
-
-In `/config.canopy.json`, you can index all, part, or none of a Work Manifest's `metadata` values.
-
-<Callout type="info">
-  By default, Canopy IIIF indexes all metadata fields.
-</Callout>
-
-In this example, we only want to target specific metadata fields, "Date", "Subject",
-"Contributor", and "Alternate Title".
-
-1. Open `/config/canopy.json`
-2. Depending on which environment you'd like to target (`dev` or `prod`) provide an array of metadata fields you'd like exposed in search results. (In the [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif) we include "Date", "Subject", "Contributor" and "Alternate Title" as `metadata` items)
-
-In this example, we'll update the `dev` configuration:
-
-```json filename="config/canopy.json" {10}
+```json filename="config/canopy.json" {3} copy
 {
-  "dev": {
-    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%2259ec43f9-a96c-4314-9b44-9923790b371c%22&as=iiif",
-    "featured": [
-      "https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif"
-    ],
-    "label": {
-      "none": ["Western Africa Manuscripts"]
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=100",
+  "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": ["latin:extra", "arabic:extra"],
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
     },
-    "metadata": ["Date", "Subject", "Contributor", "Alternate Title"],
-    "summary": {
-      "none": ["Brief description of the site and its contents."]
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": true
+      }
     }
-  },
-  "prod": {...}
+  }
 }
 ```
 
-3. Restart your development server to see the changes.
-
 <Callout type="info">
-  **Pro tip**: To visually confirm text being indexed for search, open the file
-  `.canopy/index.json` and verify your custom data is being indexed.
+  **Pro tip**: To confirm text being indexed for search, open the file
+  `.canopy/index.json` and verify your custom data is being added to the index.
 </Callout>
 
 ### Validate search customizations
