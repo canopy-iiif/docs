@@ -51,13 +51,22 @@ import { Box, Text, Section } from "@radix-ui/themes";
 ### Modify environmmental variables
 
 - Next, find the `.env` file in your repository and open it for editing
-- Modify `NEXT_PUBLIC_URL` to reflect your GitHub username, ex: `https://mathewjordan.github.io`
+- Modify `NEXT_PUBLIC_URL` to reflect your GitHub username, ex: `https://markpbaggett.github.io`
 - Modify `NEXT_PUBLIC_BASE_PATH` to reflect the name of your new repository , ex: `/delaney-project`
 - Commit the changed `.env` file
+
+The `.env` file should follow a format similar to the following:
 
 ```sh filename=".env" copy
 NEXT_PUBLIC_URL="https://{GITHUB_USERNAME}.github.io"
 NEXT_PUBLIC_BASE_PATH="/{GITHUB_REPOSITORY_NAME}"
+```
+
+In this example, we are using the GitHub username `markpbaggett` and the repository name `delaney-project`.
+
+```sh filename=".env" copy
+NEXT_PUBLIC_URL="https://markpbaggett.github.io"
+NEXT_PUBLIC_BASE_PATH="/delaney-project"
 ```
 
 After committing the new `.env` file, a GitHub workflow will run. Once the action has run successfully, the action indicator should update to a check mark and a new branch **gh-pages** will be created with an output of your static site.
@@ -74,14 +83,21 @@ After committing the new `.env` file, a GitHub workflow will run. Once the actio
 
 ### Validate the URL
 
+<Callout type="info">
+  **Tip**: Find the URL in the GitHub **Settings** tab, by viewing **Pages**
+  under _Code and automation_.
+</Callout>
+
 Now your Canopy site will be active at a URL derived from values you defined in the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH` settings.
 
 ```sh
 https://[NEXT_PUBLIC_URL][NEXT_PUBLIC_BASE_PATH]
 ```
 
-You can also view your live domain in GitHub the **Settings** tab, and viewing **Pages** under _Code and automation_.
+The example values above would result in the following URL:
 
-![View live gh-pages domain in Settings](/examples/guide-deploy-view-domain.png)
+```sh
+https://markpbaggett.github.io/delaney-project
+```
 
 </Steps>
