@@ -1,4 +1,4 @@
-import { Box, Flex, ScrollArea } from "@radix-ui/themes";
+import { Box, Flex } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
 
 import { Collection } from "@iiif/presentation-3";

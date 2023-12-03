@@ -1,15 +1,20 @@
 import { AspectRatio, Box, Flex, Heading, Text } from "@radix-ui/themes";
-// @ts-ignore
-import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
+import React, { useState } from "react";
 
 import Image from "next/image";
+// @ts-ignore
+import { Label } from "@samvera/clover-iiif/primitives";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import React from "react";
 
 const SplashCollection = ({ data }) => {
   const GridItem = ({ index }) => {
     const options = [0.618, 1, 1.382];
     const ratio = options[index % 3];
+    const [loaded, setLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+      setLoaded(true);
+    };
 
     return (
       <Flex direction="column">
@@ -18,17 +23,22 @@ const SplashCollection = ({ data }) => {
             backgroundColor: " var(--accent-4)",
           }}
         >
-          <AspectRatio ratio={ratio}>
+          <AspectRatio
+            ratio={ratio}
+            className={`example-image ${loaded ? "loaded" : ""}`}
+          >
             {data?.items[index].thumbnail[0].id && (
               <Image
                 src={data?.items[index].thumbnail[0].id}
                 alt="example-image"
                 fill={true}
+                onLoad={handleImageLoad}
                 style={{
                   objectFit: "cover",
                   width: "100%",
                   height: "100%",
                   borderRadius: "var(--radius-2)",
+                  opacity: loaded ? 1 : 0,
                 }}
               />
             )}

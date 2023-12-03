@@ -1,5 +1,6 @@
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 
+import Footer from "@components/Footer";
 import Logo from "./components/Logo";
 import React from "react";
 import TitleComponent from "@components/TitleComponent";
@@ -51,7 +52,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/canopy-iiif/docs/blob/main",
   footer: {
-    text: siteDescription,
+    text: <Footer description={siteDescription} />,
   },
   darkMode: false,
   gitTimestamp: null,
