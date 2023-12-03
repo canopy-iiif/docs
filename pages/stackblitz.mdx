@@ -1,0 +1,88 @@
+import { Callout, Steps } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# StackBlitz Playground
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Want to quickly try out Canopy? Click the button below to open a
+    [StackBlitz](https://stackblitz.com/) playground.
+  </Text>
+</Section>
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/fork/github/canopy-iiif/canopy-iiif)
+
+## Use Case(s)
+
+- You don't want to install Canopy locally or be concerned with a developer environment.
+- You want to quickly experiment with config, settings, and or target Collections.
+- You'd like to showcase a IIIF-driven project for your team or colleagues.
+
+<Callout>
+  There may be CORS issues rendering images in Safari and Firefox browsers. If
+  you're experiencing broken images, please try Chrome or Brave browsers.
+</Callout>
+
+## Implementation
+
+<Steps>
+
+### Create a StackBlitz instance
+
+Click on the button above, "Open in StackBlitz". This will open a new browser tab and load the Canopy project in StackBlitz.
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-stackblitz-default.png)
+</Box>
+
+### Customize Canopy Collection
+
+If you'd like to jump right into customizing or tinkering with config settings, try re-naming `/config/canopy.sample.json` to `/config/canopy.json`. This will override the default config settings and allow you to experiment with your own settings.
+
+<Callout type="info">
+  When demoing in StackBlitz, your are in `dev` mode when configuring
+  `/config/canopy.json`. This means that you can use the `dev` settings to
+  target a IIIF Collection or Manifest.
+</Callout>
+
+For example, let's use the [Charlotte Mormon Collection](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%22b46c9cf7-0e49-4993-9e0e-3cda030c4439%22&as=iiif) from Northwestern University Libaries.
+
+```json filename="/config/canopy.json" {19-20}
+{
+  "prod": {
+    "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    },
+    "collection": "https://example.org/iiif/collection.json",
+    "featured": [
+      "https://example.org/manifest-1.json",
+      "https://example.org/manifest-2.json"
+    ],
+    "metadata": ["Date", "Subject"]
+  },
+  "dev": {
+    "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%22b46c9cf7-0e49-4993-9e0e-3cda030c4439%22&as=iiif",
+    "featured": [],
+    "metadata": ["Date", "Subject"]
+  }
+}
+```
+
+After making any configuration changes, you'll need to re-start the dev server (as you would have to in a local development environment also). StackBlitz gives access to a Terminal.
+
+<Box m="9" my="6">
+  ![canopy home page](/examples/guide-stackblitz-terminal.png)
+</Box>
+
+Click into the Terminal and quit the dev server by pressing `ctrl + c`. Then, re-start the dev server by running `npm run dev`.
+
+### Customize Canopy Options
+
+For example, you could experiment with customizing Search, following the [Search Guide](/customize-the-search-index). To start customizing options, rename `/config/options.sample.json` to `/config/options.json`.
+
+</Steps>
