@@ -1,6 +1,6 @@
 import { Steps } from "nextra/components";
 import { Callout } from "nextra/components";
-import { Text, Section } from "@radix-ui/themes";
+import { Box, Text, Section } from "@radix-ui/themes";
 
 # Deploy to GitHub Pages
 
@@ -31,35 +31,44 @@ import { Text, Section } from "@radix-ui/themes";
 
 ### Create your template repository
 
-Click the "Use this template" button at the top of the [Canopy IIIF](https://github.com/canopy-iiif/canopy-iiif)
-repository to create a new repository based on this template. Select "Create a new repository" and choose the GitHub
-account or organization you want to copy the contents to from the **Owner** dropdown. Choose a name for your new repository
-and entire it in the **Repository name** field. Unless you have a paid GitHub account, select **Public**. Click the
-"Create repository" button to create the new repository.
+- Navigate to the [Canopy IIIF](https://github.com/canopy-iiif/canopy-iiif) repository
+- Click the **Use this template** dropdown and then select **Create a new repository**
+- Under **Owner**, select the GitHub account or organization (if applicable) that you want to own the repository
+- Enter a **Repository name** for your new Canopy IIIF project, ex: `delaney-project`
+- Click the **Create repository** button
 
-![Use Template](/examples/use-template.png)
+![create new repository from use template](/examples/use-template.png)
 
-### Adjust repository settings
+### Adjust workflow permissons
 
-Once the repository is created, press the **Settings** button and **Actions** → **General** under _Code and automation_.
+- Once the repository is created, open the **Settings** tab
+- Open the **Actions** dropdown under _Code and automation_ and select **General** .
+- Select **Read and write permissions** option under _Workflow permissions_ and **Save**. This allows the GitHub
+  workflow to run and the static Canopy output to be deployed to a new branch.
 
-Then select **Read and write permissions** under _Workflow permissions_ and press **Save**. This allows the GitHub
-workflow to run and the static Canopy output to be deployed to a new branch.
-![Workflow Permissions](/examples/workflow-permissions.png)
+![adjust workflow Permissions](/examples/workflow-permissions.png)
 
 ### Modify environmmental variables
 
-Next, modify the `.github/workflows/gh-pages.deploy.yml` file in repository for the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH`
-to be relative to the new repository. After changing these settings, commit your change and trigger the action to run.
-Once the action has run, the action indicator should change from a _red X_ to a _green check mark_ and a new branch called
-**gh-pages** will be created.
-![Modify gh-pages.deploy.yml](/examples/modify-gh-pages-deploy.png)
+- Next, find the `.env` file in your repository and open it for editing
+- Modify `NEXT_PUBLIC_URL` to reflect your GitHub username, ex: `https://mathewjordan.github.io`
+- Modify `NEXT_PUBLIC_BASE_PATH` to reflect the name of your new repository , ex: `/delaney-project`
+- Commit the changed `.env` file
+
+```sh filename=".env" copy
+NEXT_PUBLIC_URL="https://{GITHUB_USERNAME}.github.io"
+NEXT_PUBLIC_BASE_PATH="/{GITHUB_REPOSITORY_NAME}"
+```
+
+After committing the new `.env` file, a GitHub workflow will run. Once the action has run successfully, the action indicator should update to a check mark and a new branch **gh-pages** will be created with an output of your static site.
 
 ### Watch the build
 
-Once the **gh-pages** branch exists and the action indicator is a _green check mark_, again press the Settings button.
-Under _Code and automation_, click **Pages** and select **gh-pages** from the **Branch** dropdown under _Build and deployment_
-and click \*_Save_.
+- Once the **gh-pages** branch exists, press the **Settings** tab
+- Under _Code and automation_, press **Pages**
+- In the _Build and deployment_ section, select **gh-pages** from the **Branch** dropdown
+- Leave `/(root)` set from the **Folder** dropdown
+- Click **Save**
 
 ![Set gh-pages in Settings](/examples/set-gh-pages.png)
 
@@ -67,9 +76,11 @@ and click \*_Save_.
 
 Now your Canopy site will be active at a URL derived from values you defined in the `NEXT_PUBLIC_URL` and `NEXT_PUBLIC_BASE_PATH` settings.
 
-i.e. `https://[NEXT_PUBLIC_URL]/[NEXT_PUBLIC_BASE_PATH]`
+```sh
+https://[NEXT_PUBLIC_URL][NEXT_PUBLIC_BASE_PATH]
+```
 
-You can also view your live domain in Github by clicking the top **Settings** button, and then under _Code and automation_ -> **Pages**.
+You can also view your live domain in GitHub the **Settings** tab, and viewing **Pages** under _Code and automation_.
 
 ![View live gh-pages domain in Settings](/examples/guide-deploy-view-domain.png)
 
