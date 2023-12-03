@@ -1,0 +1,12 @@
+{
+  "*": {
+    "theme": {
+      "breadcrumb": true
+    }
+  },
+  "home": "Home",
+  "search": "Search",
+  "works": "Works",
+  "metadata": "Metadata",
+  "map": "Map"
+}
