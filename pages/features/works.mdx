@@ -5,15 +5,22 @@ import { Box } from "@radix-ui/themes";
 
 For each Manifest in your source IIIF Colllection, Canopy automatically generates a unique route that serves as the work page for that item as `/works/${slugified-manifest-label}`. The contents of the Manifest are parsed and utilized to automatically generate all the features of the work page.
 
-<Box m="9" my="6">
-  ![canopy work page](/examples/creating-markdown-content-referenced-item-2.png)
-</Box>
-
 <Callout type="info">
   If the label of the Manifest is not unique, Canopy will append a unique identifier to the end of the slug to ensure each work page has a unique route.
 </Callout>
 
 ## Features
+
+The work page is composed of several features that are generated automatically based on the contents of the Manifest:
+
+- [IIIF Viewer](#iiif-viewer)
+- [Metadata and Required Statements](#metadata-and-required-statements)
+- [Referenced Content](#referenced-content)
+- [Related Works](#related-works)
+
+<Box m="9" my="6">
+  ![canopy work page](/examples/creating-markdown-content-referenced-item-2.png)
+</Box>
 
 ### IIIF Viewer
 
