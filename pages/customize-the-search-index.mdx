@@ -182,7 +182,7 @@ To include Manifest `summary` values in the search index, update the `search.ind
 
 Implementers may choose to index all, part, or none of the `metadata` in Manifests. By default, Canopy IIIF indexes only values defined in the `metadata` property of `config/canopy.json` file.
 
-Our source IIIF Collection has Manifest with specific `metadata` content to index, and we want to limit this to **Date**, **Subject**, **Contributor**, and **Alternate Title** labels. In this [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif), the respective values of _"Translated title: Love fāʼidah with the amulet of Prophet Yūsuf"_ and _"Falke, ʻUmar, 1893-1962 (Collector)"_ would be included in the index.
+Our source IIIF Collection has Manifests with specific `metadata` content to index, and we want to limit this to **Date**, **Subject**, **Contributor**, and **Alternate Title** labels. In this [example Manifest](https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif), the respective values of _"Translated title: Love fāʼidah with the amulet of Prophet Yūsuf"_ and _"Falke, ʻUmar, 1893-1962 (Collector)"_ would be included in the index.
 
 ```json filename="https://api.dc.library.northwestern.edu/api/v2/works/2ca1b09b-cbad-43dd-82bf-a7fa807269d8?as=iiif" {14, 19, 26, 31}
 {
