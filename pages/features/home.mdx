@@ -4,10 +4,33 @@ import { Callout } from "nextra/components";
 
 The Canopy IIIF build process automatically generates a home page for your collection.
 
+This page is configurable from the ``content/index.mdx` file in your collection's repository.
+
+```mdx file=content/index.mdx
+---
+title: Canopy IIIF
+showHero: true
+showHighlighted: true
+---
+
+## About Canopy
+
+**Canopy IIIF** is a purely [IIIF](https://iiif.io/) sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a [IIIF Collection](https://iiif.io/api/presentation/3.0/#51-collection) and the resources it references.
+
+<ButtonWrapper>
+  <Button children="Read More" href="/about" buttonType="primary" />
+  <Button
+    children="View Code"
+    href="https://github.com/canopy-iiif/canopy-iiif"
+  />
+</ButtonWrapper>
+
+```
+
 ## Hero Image
 
-Using the `featured` property in your collection's `config/canophy.json` file, a hero image is created for your
-collection automatically.
+If `showHero` is `true, a hero image is created for your collection automatically. If a `featured` property is included
+in your collection's `config/canophy.json` file, the hero image will be generated from these manifests.
 
 ```json file=config/canopy.json {4-7}
 {
@@ -26,6 +49,13 @@ Manifest is displayed as the title of the work.
 
 If no `featured` Manifests are provided in `config/canopy.json`, the hero image will be randomly selected from the
 Manifests within the collection.
+
+## Custom Content
+
+Beneathe the hero image, you can add custom content to the home page. This content is generated from the `content/index.mdx`
+file in your collection's repository.
+
+```mdx file=content/index.mdx
 
 ## Highlighted Works
 
@@ -55,6 +85,3 @@ that is passed to each slider is randomly selected during build time.
   For more information on Sliders in Canopy, see [Slider](/content/slider) and the [Create Markdown Content](/create-markdown-content)
   guide.
 </Callout>
-
-## Additional Content
-
