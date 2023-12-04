@@ -36,7 +36,7 @@ A custom Canopy configuration is created at `config/canopy.json`. The file must 
 
 ### collection
 
-The `collection` property is **required** and must be the URI of the referenced source IIIF Collection and must match the `id` of this resource. Collections referencing other Collections in their `items` property are not currently supported.
+The `collection` property is **required** and must be the URI of the referenced source IIIF Collection. Also, the `id` property on the IIIF Collection must match this value. Collections referencing other Collections in their `items` property are not currently supported.
 
 ```json
 "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=500"
