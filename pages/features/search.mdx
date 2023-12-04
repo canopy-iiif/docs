@@ -1,1 +1,24 @@
-# Search
+import { Box } from "@radix-ui/themes";
+
+# Search and Work Results
+
+Canopy IIIF automatically provides a route to all works in a collection at `/works`. This same page is displayed when
+a user searches for a term in the search bar at the top of the screen. This page displays thumbnails for all works in
+the collection using a masonry layout so that the full thumbnail is displayed within the grid. All works are displayed
+from this route and are lazily loaded as the user scrolls down the page.
+
+## Features
+
+The search and work results page is composed of several features that are available automatically:
+
+- Results List
+- Filter
+
+<Box m="9" my="6">
+  ![canopy work results](/examples/features-search-1.png)
+</Box>
+
+### Results List
+
+### Filter
+

@@ -5,6 +5,10 @@ import { Box } from "@radix-ui/themes";
 
 For each Manifest in your source IIIF Colllection, Canopy automatically generates a unique route that serves as the work page for that item as `/works/${slugified-manifest-label}`. The contents of the Manifest are parsed and utilized to automatically generate all the features of the work page.
 
+<Callout>
+  For more information about the pattern Canopy uses for converting a label to URL slug, see the [slugify](https://www.npmjs.com/package/slugify) npm package.
+</Callout>
+
 <Callout type="info">
   If the label of the Manifest is not unique, Canopy will append a unique identifier to the end of the slug to ensure each work page has a unique route.
 </Callout>
