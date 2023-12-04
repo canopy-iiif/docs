@@ -10,18 +10,9 @@ import { Box, Text, Section } from "@radix-ui/themes";
   </Text>
 </Section>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/fork/github/canopy-iiif/canopy-iiif)
+## Use Case
 
-## Use Case(s)
-
-- You don't want to install Canopy locally or be concerned with a developer environment.
-- You want to quickly experiment with config, settings, and or target Collections.
-- You'd like to showcase a IIIF-driven project for your team or colleagues.
-
-<Callout>
-  There may be CORS issues rendering images in Safari and Firefox browsers. If
-  you're experiencing broken images, please try Chrome or Brave browsers.
-</Callout>
+You are seeking to quickly try out or demonstrate Canopy IIIF and do not want to install it locally or be concerned with a developer environment.
 
 ## Implementation
 
@@ -29,10 +20,17 @@ import { Box, Text, Section } from "@radix-ui/themes";
 
 ### Create a StackBlitz instance
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/fork/github/canopy-iiif/canopy-iiif)
+
 Click on the button above, "Open in StackBlitz". This will open a new browser tab and load the Canopy project in StackBlitz.
 
+<Callout>
+  There may be CORS issues rendering images in Safari and Firefox browsers. If
+  you're experiencing broken images, please try Chrome or Brave browsers.
+</Callout>
+
 <Box m="9" my="6">
-  ![canopy home page](/examples/guide-stackblitz-default.png)
+  ![new stackblitz instance](/examples/stackblitz-default.png)
 </Box>
 
 ### Customize Canopy Collection
@@ -45,44 +43,29 @@ If you'd like to jump right into customizing or tinkering with config settings, 
   target a IIIF Collection or Manifest.
 </Callout>
 
-For example, let's use the [Charlotte Mormon Collection](https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%22b46c9cf7-0e49-4993-9e0e-3cda030c4439%22&as=iiif) from Northwestern University Libaries.
+For example, let's use the [Athletic Department Football Films](https://dc.library.northwestern.edu/search?collection=Athletic%20Department%20Football%20Films) collection provided by Northwestern University.
 
-```json filename="/config/canopy.json" {19-20}
+- **Create** a file named `config/canopy.json`.
+- **Copy** the below configuration into the file.
+- **Save** the configuration file.
+
+```json filename="config/canopy.json"
 {
-  "prod": {
-    "label": { "none": ["Collection Title"] },
-    "summary": {
-      "none": ["Brief description of the site and its contents."]
-    },
-    "collection": "https://example.org/iiif/collection.json",
-    "featured": [
-      "https://example.org/manifest-1.json",
-      "https://example.org/manifest-2.json"
-    ],
-    "metadata": ["Date", "Subject"]
-  },
-  "dev": {
-    "label": { "none": ["Collection Title"] },
-    "summary": {
-      "none": ["Brief description of the site and its contents."]
-    },
-    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%22b46c9cf7-0e49-4993-9e0e-3cda030c4439%22&as=iiif",
-    "featured": [],
-    "metadata": ["Date", "Subject"]
-  }
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/8cdf83c9-3831-4211-acd7-122bca9b89da?as=iiif&size=200",
+  "metadata": ["Date", "Subject"]
 }
 ```
 
-After making any configuration changes, you'll need to re-start the dev server (as you would have to in a local development environment also). StackBlitz gives access to a Terminal.
+After making any configuration changes, your dev server will automatically re-build and re-load the app. You can see the dev server status in the StackBlitz Terminal.
 
 <Box m="9" my="6">
-  ![canopy home page](/examples/guide-stackblitz-terminal.png)
+  ![custom stackblitz instance](/examples/stackblitz-custom.png)
 </Box>
 
 Click into the Terminal and quit the dev server by pressing `ctrl + c`. Then, re-start the dev server by running `npm run dev`.
 
-### Customize Canopy Options
+### Customize Other Options
 
-For example, you could experiment with customizing Search, following the [Search Guide](/customize-the-search-index). To start customizing options, rename `/config/options.sample.json` to `/config/options.json`.
+You now have a starting point to customize other options. For example, you can now experiment further with the [Customize the Search Index](/customize-the-search-index) guide.
 
 </Steps>
