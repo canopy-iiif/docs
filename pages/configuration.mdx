@@ -44,7 +44,7 @@ The `collection` property is **required** and must be the URI of the referenced 
 
 ### devCollection
 
-The `devCollection` property is an optional property used only when running the development server using `npm run dev`. Like `collection`, it must be the URI of the referenced source IIIF Collection and must match the `id` of this resource. The `devCollection` property is useful when working with a large IIIF Collection and you want to target a smaller subset of the collection for development purposes.
+The optional `devCollection` property is used only when running the development server using `npm run dev`. Like `collection`, the value must be the URI of the referenced source IIIF Collection and must match its `id`. The `devCollection` property is useful when working with a large IIIF Collection and you want to target a smaller subset of the collection for development purposes.
 
 ```json
 "devCollection": "https://api.dc.library.northwestern.edu/api/v2/collections/1c2e2200-c12d-4c7f-8b87-a935c349898a?as=iiif&size=25"
