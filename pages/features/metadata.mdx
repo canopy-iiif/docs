@@ -1,1 +1,25 @@
+import { Box } from "@radix-ui/themes";
+
 # Metadata
+
+Canopy IIIF provides a Metadata page as an additional access point where users can easily discover all the unique facets
+across the collection.
+
+<Box m="9" my="6">
+  ![canopy metadata page](/examples/features-metadata-1.png)
+</Box>
+
+This page is generated automatically during the build process and is based on the values specified in the `metadata`
+property of the `config/canopy.json` file.
+
+```json {3}
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22nez%20perce%22&as=iiif&size=125",
+  "metadata": ["Subject", "Date", "Dimensions"],
+}
+```
+
+The page is organized based on the order of the metadata labels in the array. Below each label is a link to search
+results to works in the collection that have that metadata label and a unique value. The values are organized in order
+of how many works have that label and value pair in the collection. Clicking the link will take the user to search
+results limited to that specific label and value pair.
