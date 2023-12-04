@@ -1,16 +1,21 @@
 import { Callout } from "nextra/components";
+import { Box } from "@radix-ui/themes";
 
 # Works
 
 Canopy IIIF automatically generates a unique web page during the build process for each Manifest listed in your
 Collection.
 
+<Box m="9" my="6">
+  ![canopy work page](/examples/creating-markdown-content-referenced-item-2.png)
+</Box>
+
 ## Viewer
 
 At the top of the work page is the [Viewer](/content/viewer). Currently, Canopy utilizes the viewer component
-from [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) which is able to display deep zoomable images, A/V
-resources, and multi-canvased works. The original IIIF Manifest that this page is built from is passed to the viewer
-for display instructions.
+from [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) to display deep zoomable images, A/V resources, and
+multi-canvased works. The original IIIF Manifest that this page is built from is passed to the viewer for display
+instructions.
 
 ## Metadata and Required Statements
 
