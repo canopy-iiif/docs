@@ -1,1 +1,46 @@
+import { Callout } from "nextra/components";
+
 # Works
+
+Canopy IIIF generates a unique web page for each Manifest in your Collection during the build process.
+
+## Viewer
+
+At the top of the page is the [Viewer component](/content/viewer). Currently, Canopy utilizes the Viewer component
+from [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) to display deep zoomable images and A/V content. The
+viewer leverages the IIIF Manifest related to the page to display the content.
+
+## Metadata and Required Statements
+
+Directly underneath the viewer the work's metadata is displayed. This component is generated from several properties
+found in the underlying IIIF Manifest. First, the `label` of the Manifest is displayed as the title of the work. Next,
+if a `summary` is present in the Manifest, it is displayed as the work's description. Then, each JSON object in the
+`metadata` and `requiredStatement` properties of the Manifest are displayed. The strings of the labels are transformed
+to definition term elements (`<dt>`) and their associated values are transformed to definition description elements
+(`<dd>`). If the metadata label is listed in the `metadata` property inside the `canopy.json` file, the value will be
+a hyper link that lists all search results within the collection that also contain the value. Finally, a link to the
+IIIF Manifest is displayed so that the item can be easily reused.
+
+## Referenced Component
+
+If the Manifest has been included in a `referencedManifests` section of any custom content page, a link to the custom
+content will be generated and displayed in the **Content Referencing This Work** section.
+
+<Callout>
+  To learn more about referencing manifests in custom content pages, see the
+  [Create Markdown Content](/create-markdown-content#reference-collection-items) guide.
+</Callout>
+
+
+## Related Works
+
+Finally, the Related Works sections is displayed. This section is generated automatically by Canopy and is based on the
+contents of the `metadata` property in `canopy.json`. For each value, Canopy creates a [Slider](/content/slider)
+component based on a random value associated with the label in the parent Manifest's `metadata` property. This label
+and value has a corresponding IIIF Collection Manifest that is generated during the build process that includes all
+manifests in the collection that have the same label and value.
+
+<Callout>
+  To learn more about referencing manifests in custom content pages, see the
+  [Leveraging Metadata Collections](/leverage-metadata-collections) guide.
+</Callout>
