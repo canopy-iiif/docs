@@ -2,7 +2,7 @@ import { Callout } from "nextra/components";
 
 # Map
 
-A map route can be enabled to provide geographic discovery of works via `config/options.json`. This feature builds markers off of geographic point features found in [navPlace](https://iiif.io/api/extension/navplace/) properties at the Manifest level. For implementation, Canopy IIIF uses [Leaflet](https://leafletjs.com/) to render the map.
+A map route can be enabled to provide geographic discovery of works. This feature builds markers from geographic point features found in [navPlace](https://iiif.io/api/extension/navplace/) properties at the Manifest level. For implementation, Canopy IIIF uses [Leaflet](https://leafletjs.com/) to render the map.
 
 **Note:** Currently, only `navPlace` properties found at the Manifest level are displayed. Also, only Features of `type` **Point** are displayed.
 
@@ -12,6 +12,8 @@ A map route can be enabled to provide geographic discovery of works via `config/
 </Callout>
 
 ## Properties
+
+The `map` property is an object that contains the configuration for the `/map` route and its components.
 
 | Property        | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -74,13 +76,16 @@ The map's tile layers are also configured here, giving users the ability to choo
 
 ## Example Map Configuration
 
-Example of the `map` configuration in `config/options.json` file with a map enabled:
+In this example, we have a IIIF Collection with Manifests having `navPlace` properties. The configuration enables the `/map` route and uses an Open Street Map tile layer.
 
-```json copy filename="config/options.json"
+```json copy filename="config/canopy.json" {5-20}
 {
+  "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
+  "featured": ["  https://digital.lib.utk.edu/assemble/manifest/wcc/269"],
+  "metadata": ["Place", "Date", "Subject"],
   "map": {
-    "defaultBounds": [[51.505, -0.09]],
     "enabled": true,
+    "defaultBounds": [[51.505, -0.09]],
     "icon": {
       "iconUrl": "images/marker-icon.png",
       "iconSize": [24, 36],

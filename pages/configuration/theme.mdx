@@ -4,11 +4,13 @@ export const defaultThemeTooltipContent = '"light" | "dark" | "system"';
 
 # Theme
 
-The default theme for users can be set via `config/options.json`. This feature sets the initial theme for users as **light**, **dark**, or **system**. The _Toggle Theme_ button can also be enabled or disabled here.
+Implementers may choose to modify the theme settings of their Canopy IIIF project. Options include **light**, **dark**, or **system**. The _Toggle Theme_ button can also be enabled or disabled.
 
 **Note:** Theme settings are stored in the users local browser storage. Setting the theme will only affect new users to your site. It will not change the default theme for users who have already visited.
 
 ## Properties
+
+The `theme` property can be customized in the `config/canopy.json` file.
 
 | Property        | Type                                                           | Description                                                  |
 | --------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -33,10 +35,11 @@ Boolean value that enables or disables the _Toggle Theme_ button in the footer. 
 
 ## Example Theme Configuration
 
-Example of the `theme` configuration in `config/options.json` file with a `defaultTheme` of **light** and the `toggleEnabled` set to **false**.
+Example of the `theme` configuration in `config/canopy.json` file with a `defaultTheme` of **light** and the `toggleEnabled` set to **false**.
 
-```json copy filename="config/options.json"
+```json copy filename="config/canopy.json" {3-6}
 {
+  "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
   "theme": {
     "defaultTheme": "light",
     "toggleEnabled": false

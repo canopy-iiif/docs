@@ -4,5 +4,9 @@
       "breadcrumb": true
     }
   },
+  "basic": {
+    "title": "Basic",
+    "href": "/configuration"
+  },
   "search": "Search"
 }

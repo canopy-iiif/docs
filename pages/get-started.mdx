@@ -61,7 +61,7 @@ npm install
 
 ### Create configuration file
 
-Copy the example configuration file and update the `prod` and `dev` values with your IIIF Collection URL. See [Configuration](/configuration) for detailed documentation.
+Copy the sample configuration file and update `collection`, `featured`, and `metadata` properties.
 
 ```sh copy
 cp config/canopy.sample.json config/canopy.json
@@ -73,26 +73,19 @@ In this example we will use the [Korean Literary Collection](https://digitalcoll
 - **`featured`** array is a list of Manifest URIs that will be promoted thoughout your Canopy IIIF site
 - **`metadata`** array is a list of metadata labels that **match** string values in your Manifest URI metadata entries to be used for discovery purposes
 
+<Callout type="info">
+  See [Configuration](/configuration) for detailed documentation.
+</Callout>
+
 ```json copy filename="config/canopy.json"
 {
-  "prod": {
-    "collection": "https://digitalcollections.lib.washington.edu/iiif/2/korean/manifest.json",
-    "featured": [
-      "https://cdm16786.contentdm.oclc.org/iiif/korean:138/manifest.json"
-    ],
-    "metadata": ["Author", "Place of Publication"]
-  },
-  "dev": {
-    "collection": "https://digitalcollections.lib.washington.edu/iiif/2/korean/manifest.json",
-    "featured": [
-      "https://cdm16786.contentdm.oclc.org/iiif/korean:138/manifest.json"
-    ],
-    "metadata": ["Author", "Place of Publication"]
-  }
+  "collection": "https://digitalcollections.lib.washington.edu/iiif/2/korean/manifest.json",
+  "featured": [
+    "https://cdm16786.contentdm.oclc.org/iiif/korean:138/manifest.json"
+  ],
+  "metadata": ["Author", "Place of Publication"]
 }
 ```
-
-See [Options](/configuration) for more information regarding configuration.
 
 ### Ready to go!
 

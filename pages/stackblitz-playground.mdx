@@ -1,0 +1,71 @@
+import { Callout, Steps } from "nextra/components";
+import { Box, Text, Section } from "@radix-ui/themes";
+
+# StackBlitz Playground
+
+<Section size="1">
+  <Text size="4" mt="9">
+    Want to quickly try out Canopy? Click the button below to open a
+    [StackBlitz](https://stackblitz.com/) playground.
+  </Text>
+</Section>
+
+## Use Case
+
+You are seeking to quickly try out or demonstrate Canopy IIIF and do not want to install it locally or be concerned with a developer environment.
+
+## Implementation
+
+<Steps>
+
+### Create a StackBlitz instance
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/fork/github/canopy-iiif/canopy-iiif)
+
+Click on the button above, "Open in StackBlitz". This will open a new browser tab and load the Canopy project in StackBlitz.
+
+<Callout>
+  There may be CORS issues rendering images in Safari and Firefox browsers. If
+  you're experiencing broken images, please try Chrome or Brave browsers.
+</Callout>
+
+<Box m="9" my="6">
+  ![new stackblitz instance](/examples/stackblitz-default.png)
+</Box>
+
+### Customize Canopy Collection
+
+If you'd like to jump right into customizing or tinkering with config settings, try re-naming `/config/canopy.sample.json` to `/config/canopy.json`. This will override the default config settings and allow you to experiment with your own settings.
+
+<Callout type="info">
+  When demoing in StackBlitz, your are in `dev` mode when configuring
+  `/config/canopy.json`. This means that you can use the `dev` settings to
+  target a IIIF Collection or Manifest.
+</Callout>
+
+For example, let's use the [Athletic Department Football Films](https://dc.library.northwestern.edu/search?collection=Athletic%20Department%20Football%20Films) collection provided by Northwestern University.
+
+- **Create** a file named `config/canopy.json`.
+- **Copy** the below configuration into the file.
+- **Save** the configuration file.
+
+```json filename="config/canopy.json"
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/8cdf83c9-3831-4211-acd7-122bca9b89da?as=iiif&size=200",
+  "metadata": ["Date", "Subject"]
+}
+```
+
+After making any configuration changes, your dev server will automatically re-build and re-load the app. You can see the dev server status in the StackBlitz Terminal.
+
+<Box m="9" my="6">
+  ![custom stackblitz instance](/examples/stackblitz-custom.png)
+</Box>
+
+Click into the Terminal and quit the dev server by pressing `ctrl + c`. Then, re-start the dev server by running `npm run dev`.
+
+### Customize Other Options
+
+You now have a starting point to customize other options. For example, you can now experiment further with the [Customize the Search Index](/customize-the-search-index) guide.
+
+</Steps>
