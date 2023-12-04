@@ -2,12 +2,13 @@ import { Box } from "@radix-ui/themes";
 
 # Metadata
 
-Canopy IIIF provides a Metadata page as an additional access point where users can easily discover all the unique facets
-across the collection.
+Canopy IIIF automatically provides a Metadata page at `/metadata`. This page helps improve the discovery of the works within the collection by displaying a link to searches of all curated subjects from the `metadata` property in `config/canopy.json` and their unique values that appear in Manifests across the source Collection.
 
 <Box m="9" my="6">
   ![canopy metadata page](/examples/features-metadata-1.png)
 </Box>
+
+## Features
 
 This page is generated automatically during the build process and is based on the values specified in the `metadata`
 property of the `config/canopy.json` file.
