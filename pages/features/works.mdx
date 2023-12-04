@@ -2,24 +2,26 @@ import { Callout } from "nextra/components";
 
 # Works
 
-Canopy IIIF generates a unique web page for each Manifest in your Collection during the build process.
+Canopy IIIF automatically generates a unique web page during the build process for each Manifest listed in your
+Collection.
 
 ## Viewer
 
-At the top of the page is the [Viewer component](/content/viewer). Currently, Canopy utilizes the Viewer component
-from [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) to display deep zoomable images and A/V content. The
-viewer leverages the IIIF Manifest related to the page to display the content.
+At the top of the work page is the [Viewer](/content/viewer). Currently, Canopy utilizes the viewer component
+from [Clover IIIF](https://samvera-labs.github.io/clover-iiif/) which is able to display deep zoomable images, A/V
+resources, and multi-canvased works. The original IIIF Manifest that this page is built from is passed to the viewer
+for display instructions.
 
 ## Metadata and Required Statements
 
-Directly underneath the viewer the work's metadata is displayed. This component is generated from several properties
-found in the underlying IIIF Manifest. First, the `label` of the Manifest is displayed as the title of the work. Next,
-if a `summary` is present in the Manifest, it is displayed as the work's description. Then, each JSON object in the
-`metadata` and `requiredStatement` properties of the Manifest are displayed. The strings of the labels are transformed
-to definition term elements (`<dt>`) and their associated values are transformed to definition description elements
-(`<dd>`). If the metadata label is listed in the `metadata` property inside the `canopy.json` file, the value will be
-a hyper link that lists all search results within the collection that also contain the value. Finally, a link to the
-IIIF Manifest is displayed so that the item can be easily reused.
+Descriptive properties from the IIIF Manifest are displayed directly underneath the viewer. First, the `label` of the
+Manifest is displayed as the title of the work. Next, if a `summary` is present in the Manifest, it is displayed
+prominently as the work's description. Then, each JSON object in the `metadata` and `requiredStatement` properties of
+the Manifest are displayed. The string values associated with the labels are transformed to definition term elements
+(`<dt>`) and their associated values are transformed to definition description elements (`<dd>`). If the metadata label
+is listed in the `metadata` property inside the `canopy.json` file, the value will be a hyper link that lists all search
+results within the collection that also contain the value. Finally, a link to the IIIF Manifest is displayed so that the
+item can be easily reused.
 
 ## Referenced Component
 
@@ -41,6 +43,6 @@ and value has a corresponding IIIF Collection Manifest that is generated during 
 manifests in the collection that have the same label and value.
 
 <Callout>
-  To learn more about referencing manifests in custom content pages, see the
+  To learn more about reusing automatically generated collections like this in custom content pages, see the
   [Leveraging Metadata Collections](/leverage-metadata-collections) guide.
 </Callout>
