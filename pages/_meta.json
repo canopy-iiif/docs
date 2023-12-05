@@ -23,6 +23,9 @@
   "development": {
     "title": "Development"
   },
+  "features": {
+    "title": "Features"
+  },
   "*": {
     "theme": {
       "breadcrumb": false
