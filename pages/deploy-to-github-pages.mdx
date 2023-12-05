@@ -69,7 +69,16 @@ NEXT_PUBLIC_URL="https://markpbaggett.github.io"
 NEXT_PUBLIC_BASE_PATH="/delaney-project"
 ```
 
-After committing the new `.env` file, a GitHub workflow will run. Once the action has run successfully, the action indicator should update to a check mark and a new branch **gh-pages** will be created with an output of your static site.
+After committing the new `.env` file, a pre-configured [GitHub Actions workflow](https://docs.github.com/en/actions/using-workflows/about-workflows) will run.
+
+<Callout type="info">
+  If you're interested in learning more about the GitHub Actions workflow, you
+  can view the [workflow
+  file](https://github.com/canopy-iiif/canopy-iiif/blob/main/.github/workflows/gh-pages.deploy.yml)
+  in the Canopy IIIF repository.
+</Callout>
+
+Once the action has run successfully, the action indicator should update to a check mark and a new branch **gh-pages** will be created with an output of your static site.
 
 ### Watch the build
 

@@ -187,4 +187,51 @@ All Manifests in your IIIF Collection are now available as statically generated 
   ![canopy work page for single result](/examples/korean-literary-work.png)
 </Box>
 
+### Try Alternate IIIF Collections
+
+A great way to visualize the agility of Canopy IIIF is to experiment with alternate IIIF Collections. Try copying one or all of the following `config/canopy.json` configurations to your project and re-running the build process.
+
+#### Commedia dell'Arte
+
+- [View Collection](https://dc.library.northwestern.edu/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd)
+- _Provided by Northwestern University_
+
+```json copy filename="config/canopy.json"
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=collection.id:%22c373ecd2-2c45-45f2-9f9e-52dc244870bd%22&as=iiif",
+  "featured": [
+    "https://api.dc.library.northwestern.edu/api/v2/works/a037a4fb-add4-40af-8add-9a02e5573471?as=iiif"
+  ],
+  "metadata": ["Subject", "Date"]
+}
+```
+
+#### Calahan Family Postcards
+
+- [View Collection](https://digital.lib.utk.edu/collections/islandora/object/collections%3Acalahan)
+- Provided by the University of Tennessee
+
+```json copy filename="config/canopy.json"
+{
+  "collection": "https://digital.lib.utk.edu/assemble/collection/collections/calahan",
+  "featured": ["https://digital.lib.utk.edu/assemble/manifest/calahan/10"],
+  "metadata": ["Description", "Subject"]
+}
+```
+
+#### Pacific Northwest Sheet Music Collection
+
+- [View Collection](https://digitalcollections.lib.washington.edu/digital/collection/sm/search)
+- Provided by the University of Washington
+
+```json copy filename="config/canopy.json"
+{
+  "collection": "https://cdm16786.contentdm.oclc.org/iiif/2/sm/manifest.json",
+  "featured": [
+    "https://cdm16786.contentdm.oclc.org/iiif/2/sm:49/manifest.json"
+  ],
+  "metadata": ["Composer", "Genre", "Date of Publication"]
+}
+```
+
 </Steps>
