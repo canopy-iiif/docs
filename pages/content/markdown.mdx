@@ -45,6 +45,10 @@ All new content pages created in the `content` directory can have the following 
 
 The title of the page. This will be used in the HTML `<title>` and associated `<meta>` tags.
 
+#### decription
+
+The description of the page. This will be used in the HTML `<head>` for associated `<meta>` tags.
+
 #### navigation
 
 The navigation menu for the page. This should be the relative directory path for the page. For example, if the page is in `content/correspondence/`, the navigation should be `correspondence`.
@@ -56,6 +60,7 @@ A list of IIIF Manifests URIs that are referenced in the content of the page. Th
 ```mdx
 ---
 title: "January 1955 Correspondence"
+description: "Seven letters of Amanda Ira Aldridge and Mihailo Kovačević"
 navigation: "correspondence"
 referencedManifests:
   - https://api.dc.library.northwestern.edu/api/v2/works/46de2c91-3a29-4525-939e-ee17073f3a7e?as=iiif
