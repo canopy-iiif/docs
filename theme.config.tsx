@@ -54,7 +54,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: <Footer description={siteDescription} />,
   },
-  darkMode: false,
+  darkMode: true,
   gitTimestamp: null,
   nextThemes: {
     defaultTheme: "light",

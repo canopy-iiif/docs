@@ -32,6 +32,7 @@ const SplashWindow = ({ iiifContent }) => {
         top: "-50px",
         overflow: "hidden",
         left: "50%",
+        zIndex: "2",
       }}
     >
       <Box

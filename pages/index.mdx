@@ -44,7 +44,14 @@ import {
         "label": {
           "en": ["A View across the Artist's Garden from his House at Exmouth, Devonshire"]
         }
-      }
+      },
+      {
+        "id": "https://manifests.collections.yale.edu/ycba/obj/710",
+        "type": "Manifest",
+        "label": {
+          "en": ["Shipwreck"]
+        },
+      },
     ]
   }
 ```
@@ -52,8 +59,8 @@ import {
 
 <Section size="2">
   <Container size="3">
-    <Flex gap="9">
-      <Box>
+    <Flex gap="9" direction={{ initial: "column", sm: "row"} }>
+      <Box style={{minWidth: "40%"}}>
         <Heading size="7" mb="5" weight="regular" style={{ fontFamily: "var(--canopy-display-font)" }}>
           What is Canopy IIIF?
         </Heading>
@@ -67,7 +74,7 @@ import {
         </Text>
 
       </Box>
-      <Box style={{width: "50%"}} shrink="0">
+      <Box style={{minWidth: "40%"}} shrink="0">
         <Heading
           size="7"
           mb="5"
@@ -109,7 +116,7 @@ import {
       padding: "2rem",
       borderRadius: "0.5rem",
       borderTop: "4px solid var(--accent-3)",
-      width: "33.333%",
+      minWidth: "33.333%",
     }}
     grow={0}
     shrink={0}
@@ -128,7 +135,7 @@ import {
       padding: "2rem",
       borderRadius: "0.5rem",
       borderTop: "4px solid var(--accent-3)",
-      width: "33.333%",
+      minWidth: "33.333%",
     }}
     grow={0}
     shrink={0}
@@ -146,7 +153,7 @@ import {
       padding: "2rem",
       borderRadius: "0.5rem",
       borderTop: "4px solid var(--accent-3)",
-      width: "33.333%",
+      minWidth: "33.333%",
     }}
   >
     <Heading size="5" mb="3" weight="regular" color="indigo">
