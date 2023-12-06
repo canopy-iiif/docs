@@ -7,11 +7,29 @@ import React from "react";
 
 const Introduction = ({ heading, subHeading }) => {
   return (
-    <Section size="2" mb="5">
-      <Box style={{ width: "80%", minWidth: "400px" }}>
+    <Section
+      size={{
+        initial: "1",
+        sm: "2",
+      }}
+      mb="5"
+    >
+      <Box
+        mr={{
+          initial: "0",
+          sm: "9",
+        }}
+      >
         <Heading
-          size="9"
+          size={{
+            initial: "8",
+            sm: "9",
+          }}
           mb="3"
+          mr={{
+            initial: "0",
+            sm: "9",
+          }}
           weight="medium"
           style={{
             fontFamily: "var(--canopy-display-font)",
@@ -20,13 +38,31 @@ const Introduction = ({ heading, subHeading }) => {
         >
           <Balancer>{heading}</Balancer>
         </Heading>
-        <Flex direction="column" gap="2">
-          <Text size="5">
+        <Flex
+          direction="column"
+          gap="2"
+          mr={{
+            initial: "0",
+            sm: "9",
+          }}
+        >
+          <Text
+            size={{
+              initial: "4",
+              sm: "5",
+            }}
+          >
             <Balancer ratio={0.618}>{subHeading}</Balancer>
           </Text>
         </Flex>
         <Box pt="5">
-          <Flex gap="3">
+          <Flex
+            gap="3"
+            wrap={{
+              initial: "wrap",
+              sm: "nowrap",
+            }}
+          >
             <Link href="/get-started">
               <Button size="3">
                 Get Started

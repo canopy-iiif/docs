@@ -11,7 +11,7 @@ const Logo = () => (
       width="32"
       height="32"
     />
-    <span>Canopy IIIF</span>
+    <span style={{ whiteSpace: "nowrap" }}>Canopy IIIF</span>
     <style jsx>{`
       span {
         display: block;

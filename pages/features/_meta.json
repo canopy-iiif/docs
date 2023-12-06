@@ -5,13 +5,7 @@
     }
   },
   "home": "Home",
-<<<<<<< HEAD
   "search": "Search",
   "works": "Works",
   "metadata": "Metadata"
-=======
-  "metadata": "Metadata",
-  "search": "Search",
-  "works": "Works"
->>>>>>> 19feae8 (Updates to Getting Started and Deploy Guides)
 }
