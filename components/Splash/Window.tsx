@@ -1,5 +1,6 @@
 import { Box, Flex } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
+import { indigo, indigoA, slateA } from "@radix-ui/colors";
 
 import { Collection } from "@iiif/presentation-3";
 import SplashCollection from "./Collection";
@@ -25,8 +26,8 @@ const SplashWindow = ({ iiifContent }) => {
       style={{
         minWidth: "768px",
         height: "610px",
-        backgroundColor: "var(--accent-1)",
-        boxShadow: "6px 6px 29px var(--accent-5)",
+        backgroundColor: `var(--gray-1)`,
+        boxShadow: `6px 6px 50px ${slateA.slateA8}`,
         borderRadius: "5px",
         position: "absolute",
         top: "-50px",
@@ -37,7 +38,7 @@ const SplashWindow = ({ iiifContent }) => {
     >
       <Box
         style={{
-          backgroundColor: "var(--accent-12)",
+          backgroundColor: indigo.indigo12,
           padding: "0.618rem",
         }}
       >
@@ -47,7 +48,7 @@ const SplashWindow = ({ iiifContent }) => {
               style={{
                 width: "0.618rem",
                 height: "0.618rem",
-                backgroundColor: "var(--accent-8)",
+                backgroundColor: indigo.indigo8,
                 borderRadius: "50%",
                 opacity: "0.5",
               }}
@@ -56,7 +57,7 @@ const SplashWindow = ({ iiifContent }) => {
               style={{
                 width: "0.618rem",
                 height: "0.618rem",
-                backgroundColor: "var(--accent-8)",
+                backgroundColor: indigo.indigo8,
                 borderRadius: "50%",
                 opacity: "0.5",
               }}
@@ -65,7 +66,7 @@ const SplashWindow = ({ iiifContent }) => {
               style={{
                 width: "0.618rem",
                 height: "0.618rem",
-                backgroundColor: "var(--accent-8)",
+                backgroundColor: indigo.indigo8,
                 borderRadius: "50%",
                 opacity: "0.5",
               }}
@@ -73,7 +74,7 @@ const SplashWindow = ({ iiifContent }) => {
           </Flex>
           <Box
             style={{
-              backgroundColor: "var(--accent-8)",
+              backgroundColor: indigo.indigo8,
               borderRadius: "3px",
               opacity: "0.5",
             }}

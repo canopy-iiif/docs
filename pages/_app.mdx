@@ -2,8 +2,6 @@ import "../styles/global.css";
 import "@radix-ui/themes/styles.css";
 
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
-import { crimson, gold, grass, indigo, slate, violet } from "@radix-ui/colors";
-
 import { Theme } from "@radix-ui/themes";
 
 export const dm_sans = DM_Sans({
@@ -20,17 +18,17 @@ export default function CanopyDocsApp({ Component, pageProps }) {
     <Theme className={dm_sans.className}>
       <style jsx global>{`
         :root {
-          --shiki-color-text: ${slate.slate9};
+          --shiki-color-text: var(--slate-10);
           --shiki-color-background: transparent;
-          --shiki-token-constant: ${indigo.indigo10};
-          --shiki-token-string: ${grass.grass9};
-          --shiki-token-comment: ${slate.slate7};
-          --shiki-token-keyword: ${crimson.crimson11};
-          --shiki-token-parameter: ${gold.gold9};
-          --shiki-token-function: ${violet.violet9};
-          --shiki-token-string-expression: ${indigo.indigo10};
-          --shiki-token-punctuation: ${slate.slate9};
-          --shiki-token-link: ${grass.grass8};
+          --shiki-token-constant: var(--indigo-9);
+          --shiki-token-string: var(--grass-11);
+          --shiki-token-comment: var(--slate-11);
+          --shiki-token-keyword: var(--crimson-11);
+          --shiki-token-parameter: var(--gold-11);
+          --shiki-token-function: var(--violet-11);
+          --shiki-token-string-expression: var(--indigo-11);
+          --shiki-token-punctuation: var(--slate-8);
+          --shiki-token-link: var(--grass-11);
         }
         html {
           --canopy-sans-font: ${dm_sans.style.fontFamily};
