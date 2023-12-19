@@ -2,6 +2,18 @@ body {
   overflow-x: hidden;
 }
 
+.nextra-content a {
+  color: var(--accent-11);
+}
+
+li.active > a {
+  color: var(--accent-11) !important;
+}
+
+.nextra-toc ul > li > a.nx-text-primary-600 {
+  color: var(--accent-11) !important;
+}
+
 .example-image img {
   transition: opacity 0.618s ease-in-out;
 }
