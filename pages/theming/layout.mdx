@@ -1,0 +1,109 @@
+import { Cards, Card } from "nextra/components";
+import { ColorsLabeled } from "@components/Theme";
+import { Flex, Button } from "@radix-ui/themes";
+import { accentColors, grayColors } from "@radix-ui/themes/dist/esm/props";
+import Link from "next/link";
+
+# Layout
+
+Canopy IIIF leans on a combination of [Radix UI Themes](https://www.radix-ui.com/themes/docs/theme/overview) and MDX (Markdown) to provide a flexible design system. All Markdown files with `.mdx` extensions in the `content` directory have access to Radix UI Themes components.
+
+### Radix UI Themes
+
+In addition to Radix UI Themes granting access to customizable Colors, Scaling, and Radius styling, implementers have access to an [accessible component library](https://www.radix-ui.com/themes/docs/theme/overview) for building custom layouts.
+
+<Flex mt="5" gap="3">
+  <Link href="https://www.radix-ui.com/themes/playground">
+    <Button>Components</Button>
+  </Link>
+
+  <Link href="https://www.radix-ui.com/docs/overview/layout">
+    <Button variant="surface">Layout Helpers</Button>
+  </Link>
+</Flex>
+
+```jsx filename="content/about/francis-danby.mdx"
+---
+title: Francis Danby
+description: About the artist Francis Danby.
+navigation: "about"
+---
+
+# Francis Danby
+
+<Section size="2">
+  <Flex justify="between">
+    <Text size="4" weight="light">
+      Born in 1793 near Killinick, Ireland, Francis Danby initially gained recognition for his romantic landscapes and atmospheric scenes that captivated the Victorian public. After moving to Bristol, England, he became a key figure in the Bristol School of artists, where he further developed his unique style of using dramatic contrasts and rich, moody colors to evoke powerful emotions. His work, often imbued with themes of the sublime and picturesque, made significant contributions to the British Romantic movement in art.
+    </Text>
+    <Box>
+      <Image src="https://example.org/images/francis-danby.jpg" />
+    </Box>
+  </Flex>
+<Section>
+
+[...]
+```
+
+### Work Layout
+
+Canopy IIIF also provides a set of custom components for use in MDX content on specified routes. A special layout file is defined for Manifest page layouts at `content/works/_layout.mdx` with the `Work` componentsto display Manifest metadata, a IIIF Viewer, and related content.
+
+#### Work Components
+
+| Component                 | Description                                                     |
+| ------------------------- | --------------------------------------------------------------- |
+| `Work.Viewer`             | IIIF Viewer component for displaying Manifest canvas resources. |
+| `Work.Title`              | Manifest title component (renders Manifest `label`)             |
+| `Work.Summary`            | Manifest `summary` component.                                   |
+| `Work.Metadata`           | Manifest `metadata` component.                                  |
+| `Work.RequiredStatement`  | Manifest `requiredStatement` component for attribution.         |
+| `Work.ManifestId`         | Manifest `id` component.                                        |
+| `Work.ReferencingContent` | Lists Markdown content referencing this Manifest.               |
+| `Work.Related`            | Related Manifests component rendering a set of Sliders.         |
+
+#### Example Layout
+
+This example layout file uses the `Work` components to display Manifest metadata, a IIIF Viewer, and related content with `Container`, `Section`, `Tabs`, and `Box`, components.
+
+```jsx filename="content/works/_layout.mdx" {1, 5-6, 18-20, 24, 35}
+<Work.Viewer />
+
+<Container>
+  <Section pb="4">
+    <Work.Title size="9" mb="5" />
+    <Work.Summary size="4" />
+  </Section>
+
+  <Section size="1">
+    <Tabs.Root defaultValue="details">
+      <Tabs.List>
+        <Tabs.Trigger value="details">Details</Tabs.Trigger>
+        <Tabs.Trigger value="essays">Essays</Tabs.Trigger>
+      </Tabs.List>
+
+      <Box pt="3">
+        <Tabs.Content value="details">
+          <Work.Metadata />
+          <Work.RequiredStatement />
+          <Work.ManifestId />
+        </Tabs.Content>
+
+        <Tabs.Content value="essays">
+          <Work.ReferencingContent />
+        </Tabs.Content>
+
+      </Box>
+    </Tabs.Root>
+
+  </Section>
+
+  <Section size="1">
+    ## Related Works
+
+    <Work.Related />
+
+  </Section>
+
+</Container>
+```

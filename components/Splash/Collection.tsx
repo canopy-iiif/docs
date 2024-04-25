@@ -76,7 +76,7 @@ const SplashCollection = ({ data }) => {
               display: "flex",
               justifyContent: "flex-end",
             }}
-            grow="1"
+            flexGrow="1"
             mx="5"
           >
             <MagnifyingGlassIcon style={{ opacity: 0.5 }} />
@@ -89,29 +89,29 @@ const SplashCollection = ({ data }) => {
         </Flex>
       </Box>
       <Flex gap="3">
-        <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
+        <Flex direction="column" flexGrow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={0} />
           <GridItem index={5} />
           <GridItem index={10} />
           <GridItem index={15} />
         </Flex>
-        <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
+        <Flex direction="column" flexGrow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={1} />
           <GridItem index={16} />
           <GridItem index={11} />
           <GridItem index={16} />
         </Flex>
-        <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
+        <Flex direction="column" flexGrow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={2} />
           <GridItem index={7} />
           <GridItem index={12} />
         </Flex>
-        <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
+        <Flex direction="column" flexGrow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={3} />
           <GridItem index={8} />
           <GridItem index={13} />
         </Flex>
-        <Flex direction="column" grow="1" gap="3" style={{ width: "20%" }}>
+        <Flex direction="column" flexGrow="1" gap="3" style={{ width: "20%" }}>
           <GridItem index={4} />
           <GridItem index={9} />
           <GridItem index={14} />

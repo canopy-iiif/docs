@@ -1,6 +1,6 @@
 import { Box, Flex } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
-import { indigo, indigoA, slateA } from "@radix-ui/colors";
+import { indigo, slateA } from "@radix-ui/colors";
 
 import { Collection } from "@iiif/presentation-3";
 import SplashCollection from "./Collection";
@@ -84,7 +84,7 @@ const SplashWindow = ({ iiifContent }) => {
           </Box>
         </Box>
       </Box>
-      <Box grow="1" p="3" style={{ position: "relative" }}>
+      <Box flexGrow="1" p="3" style={{ position: "relative" }}>
         <SplashCollection data={data} />
       </Box>
     </Flex>

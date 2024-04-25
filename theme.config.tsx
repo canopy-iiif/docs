@@ -1,6 +1,7 @@
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 
 import Footer from "@components/Footer";
+import Link from "next/link";
 import Logo from "./components/Logo";
 import React from "react";
 import TitleComponent from "@components/TitleComponent";
@@ -20,6 +21,15 @@ const config: DocsThemeConfig = {
         : `%s – ${siteTitle}`;
 
     return { titleTemplate };
+  },
+  banner: {
+    key: "0.12.0-release",
+    text: (
+      <Link href="/theming">
+        {" "}
+        Canopy IIIF 0.12.0 - "Themes" is released. Read more →
+      </Link>
+    ),
   },
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();

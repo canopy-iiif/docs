@@ -26,6 +26,9 @@
   "features": {
     "title": "Features"
   },
+  "theming": {
+    "title": "Theming"
+  },
   "*": {
     "theme": {
       "breadcrumb": false
@@ -53,6 +56,14 @@
       "development": {
         "title": "Development",
         "href": "/development"
+      },
+      "features": {
+        "title": "Features",
+        "href": "/features"
+      },
+      "theming": {
+        "title": "Theming",
+        "href": "/theming"
       },
       "guides": {
         "title": "User Guides",
