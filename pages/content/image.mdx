@@ -1,0 +1,97 @@
+import Image from "@/components/DynamicImports/Image";
+
+# Image
+
+Use the `<Image>` component to insert a pan-zoom capable Image into your content. The component can reference a static image URL such as a `.jpg` or a IIIF Image API endpoint.
+
+## Properties
+
+| Property       | Type                                                                    | Required | Description                                                                                |
+| -------------- | ----------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------ |
+| `height`       | [CSS `height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height) | `true`   | Height of the Image canvas                                                                 |
+| `isTiledImage` | `boolean`                                                               | `false`  | Default as `false`. If `true`, the image using tiles served from a IIIF Image API endpoint |
+| `label`        | `string`                                                                | `false`  | Label of image for captioning and accessibility purposes                                   |
+| `src`          | `string`                                                                | `true`   | URL reference for image `.jpg` or IIIF Image API endpoint, ex: `*.info.json`               |
+
+- This resource may OR may not be part of the IIIF Collection used in your Canopy project.
+- Width of the image will be 100% of the containing element.
+
+## Usage
+
+Image component is rendered as a `figure` element with a `figcaption` element for the label. The `figure` is an OpenSeadragon viewer that allows for pan-zoom capabilities.
+
+### Pan-zoom using simple image (`.jpg`, `.png`, etc.)
+
+```mdx copy
+<Image
+  height="500px"
+  label="Emiliano Zapata, 1914 by Agustín Casasola. Public Domain."
+  src="https://upload.wikimedia.org/wikipedia/commons/9/99/Emiliano_Zapata4.jpg"
+/>
+```
+
+<figure style={{ margin: "var(--space-6) 0" }}>
+  <div
+    style={{
+      backgroundColor: "var(--gray-3)",
+      height: "500px",
+      position: "relative",
+      zIndex: "0",
+    }}
+  >
+    <Image
+      height="500px"
+      label="Emiliano Zapata, 1914 by Agustín Casasola. Public Domain."
+      src="https://upload.wikimedia.org/wikipedia/commons/9/99/Emiliano_Zapata4.jpg"
+    />
+  </div>
+  <figcaption
+    style={{
+      padding: "var(--space-3) 0",
+      fontSize: "var(--font-size-3)",
+      fontWeight: "500",
+    }}
+  >
+    <span>Emiliano Zapata, 1914 by Agustín Casasola. Public Domain.</span>
+  </figcaption>
+</figure>
+
+### Pan-zoom using tiles from a IIIF Image API endpoint
+
+This method is useful for large images that are served as tiles from a IIIF Image API endpoint. Note that the `src` property is the IIIF Image API endpoint URL and the `isTiledImage` property is set to `true`.
+
+```mdx copy
+<Image
+  isTiledImage={true}
+  height="500px"
+  label="Genehoa, Jaloffi, et Sierraliones regna"
+  src="https://iiif.dc.library.northwestern.edu/iiif/2/47733e1a-961c-4035-9ffe-e6518b7cf7ee"
+/>
+```
+
+<figure style={{ margin: "var(--space-6) 0" }}>
+  <div
+    style={{
+      backgroundColor: "var(--gray-3)",
+      height: "500px",
+      position: "relative",
+      zIndex: "0",
+    }}
+  >
+    <Image
+      isTiledImage={true}
+      height="500px"
+      label="Genehoa, Jaloffi, et Sierraliones regna"
+      src="https://iiif.dc.library.northwestern.edu/iiif/2/47733e1a-961c-4035-9ffe-e6518b7cf7ee"
+    />
+  </div>
+  <figcaption
+    style={{
+      padding: "var(--space-3) 0",
+      fontSize: "var(--font-size-3)",
+      fontWeight: "500",
+    }}
+  >
+    <span>Genehoa, Jaloffi, et Sierraliones regna</span>
+  </figcaption>
+</figure>
