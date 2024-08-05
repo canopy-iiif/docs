@@ -2,15 +2,15 @@ import { Steps } from "nextra/components";
 import { Callout } from "nextra/components";
 import { Box, Text, Section } from "@radix-ui/themes";
 
-# Building a Canopy Collection Using Tropy and Tropiiify
+# Set up a Collection with Tropy and Tropiiify
 
 <Section size="1">
   <Text size="4">
     Canopy IIIF generates a browseable and searchable static site for digital collections and exhibits using a
     single IIIF Collection. If you're starting from scratch, you may not have a IIIF Collection, IIIF Manifests,
-    or a IIIF Image server.  This guide will walk you through the process of starting from zero and building a
-    Canopy site around [Tropy](https://tropy.org/), [Tropiiify](https://github.com/arkalab/tropiiify), and
-    GitHub Pages to serve IIIF images.
+    or a IIIF Image server online. This guide will walk you through the process of starting from zero and leveraging
+    [Tropy](https://tropy.org/), [Tropiiify](https://github.com/arkalab/tropiiify), and GitHub Pages with Canopy to
+    deploy a full digital collection site.
   </Text>
 </Section>
 
@@ -24,13 +24,13 @@ import { Box, Text, Section } from "@radix-ui/themes";
 <Callout type="info">
     In addition to Canopy, this guide requires a [GitHub account](https://github.com/),
     [Tropy software]((https://tropy.org/)), and the [Tropiiify plugin](https://github.com/arkalab/tropiiify).
-    All of these additional requirements are free for you to use.
+    All of these additional requirements are free to use.
 </Callout>
 
 ## Use Case
 
-  You are a digital scholar with many of images on your personal computer that are not available in an existing IIIF
-  repository online, and you would like to build a new digital scholarship site that uses your materials.
+  You are a digital scholar with many images on your personal computer that are not available in an existing IIIF
+  repository online, and you would like to build a new digital scholarship site with these materials.
 
 ## Implementation
 
@@ -43,7 +43,7 @@ To do this, let's create a new GitHub repository and configure it to serve your 
 
 * Navigate to [Create New Repository](https://github.com/new).
 * Choose the account you want to own your site in the **Owner** dropdown. This is usually yourself.
-* Give your repository a name that makes sense for your project. (i.e. *images-for-canopy-project*)
+* Give your repository a name that makes sense for your project. (e.g. *images-for-canopy-project*)
 * Make sure to check the radio button next to **Public** so that the images will be publicly available.
 * Click **Create Repository**.
 
@@ -57,7 +57,7 @@ so they are meaningful to others. To do this, we are going to use Tropy.
 3. As you describe your new works, make sure you use the **Tropy Generic** metadata template so that your metadata gets mapped to the manifest.
 4. In the *identifier* field, be sure to use a unique string for each work.
 
-### Export Your Images and Works to IIIF
+### Export Your Images and Works as IIIF
 
 To get our new works to IIIF, we need to install Tropiiify. This plugin handles a lot of the complex pieces of a Canopy
 site including: creating static IIIF image API responses with tiling, splitting the images into Tiles, generating your
@@ -105,9 +105,29 @@ server.
 
 Now that all your files are ready, we can setup a new Canopy project to use them.  To do that:
 
-1. Follow the instructions in [this guide](https://canopy-iiif.github.io/docs/deploy-to-github-pages) to set up a new Canopy site in GitHub Pages.
-2. In your `config/canopy.json`file in your new Canopy instance, set the `collection` value to `https://{GitHubAccount}.github.io/{RepositoryYouCreatedInStep1}/index.json`
-3. Your site should now build. Once it's done, your Canopy site should exist with your content.
+* Follow the instructions in [this guide](https://canopy-iiif.github.io/docs/deploy-to-github-pages) to set up a new Canopy site in GitHub Pages.
+* In your `config/canopy.json`file in your new Canopy instance, set the `collection` value to `https://{GitHubAccount}.github.io/{RepositoryYouCreatedInStep1}/index.json`
+
+```json {2-3}
+{
+  "collection": "https://markpbaggett.github.io/canopy-tropy-example/index.json",
+  "devCollection": "https://markpbaggett.github.io/canopy-tropy-example/index.json",
+  "metadata": ["Date"],
+  "label": { "none": ["Tropiiify Example Site"] },
+  "summary": {
+    "none": ["An Example Site using Tropiiify"]
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "accentColor": "red",
+    "grayColor": "mauve",
+    "radius": "small",
+    "scaling": "100%"
+  }
+}
+```
+
+* The site will now build and be available online at the address described in step 5 of the **Deploy to GitHub Pages**  guide in 5 to 10 minutes.
 
 
 </Steps>
