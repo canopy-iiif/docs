@@ -1,0 +1,48 @@
+import {
+  Box,
+  Card,
+  Grid,
+  Heading,
+  Inset,
+  Text,
+  Section,
+} from "@radix-ui/themes";
+import GridItem from "@components/GridItem";
+
+<Section size="2">
+
+# Examples
+
+<Box my="4" mb="6">
+  <Text size="4">
+    Canopy IIIF is an open-source static site generator designed for fast
+    creation, contextualization, and customization of a discovery-focused
+    digital scholarship and collections website using IIIF APIs.
+  </Text>
+</Box>
+
+<Grid columns={{ initial: "1", md: "2" }} gap="6" width="auto">
+  <GridItem
+    title="Canopy IIIF Demo"
+    description='Baseline example highlighting features of a latest version Canopy IIIF site, including a homepage, collection, and item pages. The example collection is sourced from search results for "Nez Perce" provided by Northwestern University Libraries.'
+    href="https://canopy-iiif.github.io/canopy-iiif/"
+    hrefCode="https://github.com/canopy-iiif/canopy-iiif"
+    imgSrc="https://iiif.dc.library.northwestern.edu/iiif/3/8335ca0b-e08f-41d3-9e0c-d9feeaec9ccd/full/600,/0/default.jpg"
+  />
+  <GridItem
+    title="Maktaba"
+    description="An open-access digital collection of translated and contextualized Arabic manuscripts from Muslim West Africa, this project is a collaborative effort between Northwestern University and the University of Illinois at Urbana-Champaign."
+    href="https://nulib-ds.github.io/maktaba/"
+    hrefCode="https://github.com/nulib-ds/maktaba"
+    imgSrc="https://iiif.dc.library.northwestern.edu/iiif/3/ec7be632-3807-457f-9ad3-4cb3c1c463d8/full/600,/0/default.jpg"
+  />
+</Grid>
+
+<Box my="6">
+  <Text size="3">
+    **Have an example?** Submit a pull request and add it to the
+    [list](https://github.com/canopy-iiif/docs/blob/main/pages/examples.mdx)!{" "}
+  </Text>
+</Box>
+
+</Section>

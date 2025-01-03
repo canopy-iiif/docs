@@ -23,13 +23,9 @@ const config: DocsThemeConfig = {
     return { titleTemplate };
   },
   banner: {
-    key: "0.12.0-release",
-    text: (
-      <Link href="/theming">
-        {" "}
-        Canopy IIIF 0.12.0 - "Themes" is released. Read more →
-      </Link>
-    ),
+    dismissible: true,
+    key: "examples",
+    text: <Link href="/examples"> 🎉 See live examples of Canopy IIIF → </Link>,
   },
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();
